@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=960">
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="production.min.js"></script>
+
+<style type="text/css">
+
+#field{
+    background-image:url('source/screens/01-1.jpg');
+	background-size:100%;
+}
+#field[data-task="1"] #image0{
+    background-image:url('images/cell.jpg');
+	width:309px;
+	height:167px;
+    top: 104px;
+    left: 338px;
+}
+#field[data-task="1"] .clickable{
+    top: 449px;
+}
+@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi){
+	#field[data-task="1"] #image0{
+    background-image:url('images/cell@2x.jpg');
+}
+}
+
+</style>
+
+<script type="text/javascript">
+
+
+
+var task=[{},
+// step1
+{
+    "description":"Как называется такая клетка крови?",
+	"button":{},
+	"nextStepDelay":1000,
+	"test_preloadimg":[
+		'img/art.png'
+	],
+	"test_images":[
+		{"value":""}
+	],
+	"test_clickable":[
+		{"multiselect":true,"autocheck":true},
+		{"value":"лейкоцит"},
+		{"value":"тромбоцит"},
+		{"value":"эритроцит", "right":true}
+	]
+
+	
+}
+]
+</script>
+
+</head>
+<body>
+	<!--div class="zbrdv" style="position:absolute;z-index:5;" onclick="nexStep()">next
+	</div-->
+</body>
+</html>
