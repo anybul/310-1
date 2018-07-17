@@ -9,8 +9,27 @@
 <style type="text/css">
 
 #field{
-    background-image:url('source/screens/01-1.jpg');
+    background-image:url('source/screens/02-1.jpg');
 	background-size:100%;
+}
+.red-point{
+    width:20px;
+	height:20px;
+	margin-top:-20px;
+	margin-left:-20px;
+	border-radius:10px;
+	background-color:#FF7877;
+	z-index: 10;
+}
+#field[data-task="1"] .step+#description{
+    width:250px;
+	text-align:center;
+    top: 349px;
+    left: 355px;
+}
+#field[data-task="1"].finished .step+#description{
+    opacity:0;
+	transition-duration:1s;
 }
 #field[data-task="1"] #image0{
     background-image:url('images/cell.jpg');
@@ -19,32 +38,259 @@
     top: 104px;
     left: 338px;
 }
+#field[data-task="1"] #image1{
+    background-image:url('images/fish.jpg');
+	width:389px;
+	height:227px;
+    top: 74px;
+    left: 257px;
+	opacity:0;
+}
+#field[data-task="1"].finished #image0{
+    opacity:0;
+	transition-duration:2s;
+}
+#field[data-task="1"].finished #image1{
+    opacity:1;
+	transition-duration:2s;
+}
+
 #field[data-task="1"] .clickable{
     top: 449px;
+	height: 86px;
+	width: 252px;
 }
+#field[data-task="1"] .clickable .inner-element{
+    line-height: 82px;
+}
+
+#field[data-task="1"] #clickable1{
+    left: 56px;
+}
+#field[data-task="1"] #clickable2,
+#field[data-task="1"].finished #clickable3{
+    left:354px;
+}
+#field[data-task="1"].finished .clickable{
+    opacity:0;
+	transition-duration:1s;
+}
+#field[data-task="1"].finished #clickable3{
+    opacity:1;
+}
+#field[data-task="1"] #clickable3{
+    left:652px;
+}
+#fishDialog{
+    position:absolute;
+	top: 424px;
+    left: 102px;
+	width: 752px;
+    text-align: center;
+    border-radius: 5px;
+	background-color:#F0F0F0;
+}
+#fishDialog:before{
+	content:'';
+    background-image:url('images/grey-tail.png');
+	background-size:44px;
+	width:44px;
+	height:46px;
+	display:block;
+	position:absolute;
+	 top: 6px;
+    left: -44px;
+
+}
+.fish-dialog-text{
+
+	font-size: 28px;
+	line-height: 38px;
+    padding-top: 17px;
+}
+.button.fish-dialog-button{
+    position: relative;
+    display: inline-block;
+	margin: 14px 0px 13px;
+	padding: 0 40px 0;
+}
+
+#field[data-task="2"] #image0{
+    background-image:url('images/fish.jpg');
+	width:389px;
+	height:227px;
+    top: 122px;
+    left: -206px;
+}
+#field[data-task="2"][data-substep="2"] #image0{
+    width: 10px;
+    height: 10px;
+    top: 240px;
+    left: 460px;
+    z-index: 9;
+	transition-duration:1s;
+}
+#field[data-task="2"][data-substep="2"] #image1{display:none}
+#field[data-task="2"] #image2{display:none;}
+#field[data-task="2"][data-substep="2"] #image2{display:block}
+#field[data-task="2"][data-substep="2"] #fishDialog{
+    display:none;
+}
+#field[data-task="2"] .red-point{
+    opacity:0;
+}
+@keyframes step2substep2anim {
+	0%{opacity:0;}
+	99%{opacity:0;}
+	100%{opacity:1;}
+}
+#field[data-task="2"][data-substep="2"] .red-point{
+    animation:step2substep2anim 1s linear;
+    opacity:1;
+    top: 255px;
+    left: 478px;
+}
+#field[data-task="2"] #image1{
+    background-image:url('images/02-1.jpg');
+    width: 575px;
+    height: 415px;
+    top: 17px;
+    left: 280px;
+}
+#field[data-task="2"] #image2{
+    background-image:url('images/02-2.jpg');
+    width: 575px;
+    height: 415px;
+    top: 17px;
+    left: 280px;
+}
+
 @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi){
 	#field[data-task="1"] #image0{
-    background-image:url('images/cell@2x.jpg');
-}
+        background-image:url('images/cell@2x.jpg');
+    }
+	#fishDialog:before{
+		background-image:url('images/grey-tail@2x.png');
+	}
+	#field[data-task="2"] #image0{
+        background-image:url('images/fish@2x.jpg');
+	}
+	#field[data-task="2"] #image1{
+        background-image:url('images/02-1@2x.jpg');
+	}
+	#field[data-task="2"] #image2{
+        background-image:url('images/02-2@2x.jpg');
+	}
 }
 
 </style>
 
 <script type="text/javascript">
+function roundMovement(el, offsetTop, offsetLeft, radius, direction){
+        //var radius = 90;
+		//var offsetLeft = 395;
+		//var offsetTop = 235;
+		//direction true - против часовой
+		//direction = false;
+	    var x = el.position().left-offsetLeft;
+		if(x>radius){
+			x = radius;
+		} else if(x<-radius){
+			x=-radius;
+		}
+		if(
+			(el.data('plusplus'))
+		){
+			x++;
+		} else {
+			x--;
+		}
+		
+		var y2 = (radius*radius) - (x*x);
+		if(y2<0){
+			if(el.data('plusplus')){
+				x = radius;
+				el.data('plusplus','');
+			} else {
+				x = -1*radius;
+				el.data('plusplus','true');
+			}
+		
+		}
+		if((el.data('plusplus') && direction)
+			|| (!el.data('plusplus') && !direction)
+		){
+			el.css('top', offsetTop+Math.sqrt(y2));
+		} else {
+			el.css('top', offsetTop-Math.sqrt(y2));
+		}
+		
+			
+		el.css('left', x+offsetLeft);
+}
 
 
+var test_fish_dialog = {
+    create:function(input){
+		var result = [];
+		var dialog = $('<div></div>').attr('id', 'fishDialog');
+		if(input.text){
+			dialog.append($('<div></div>').addClass('fish-dialog-text').html(input.text));
+		}
+		if(input.button){
+			var button = $('<div></div>').addClass('fish-dialog-button').addClass('button').html(input.button);
+			if(input.buttonclick){
+				button.click(
+					input.buttonclick
+				);
+			}
+			
+			dialog.append(button);
+		}
+		result.push(dialog);
+		return result;
+	}
+};
 
+var test_test = {
+    create:function(){
+		
+		 
+		    //$('#image3')
+		
+		return [];
+	},
+	onStart:function(){
+	setInterval(function(){
+		roundMovement($('#image3'), 235, 395, 90, true);
+		roundMovement($('#image4'), 235, 660, 190, false);
+	}, 10);
+	setInterval(function(){
+	//	roundMovement($('#image4'), 235, 695, 90, false);
+	}, 20);
+		//var radius = 90;
+		//var offsetLeft = 395;
+		//var offsetTop = 235;);
+		
+	}
+};
+
+//a2+b2=c2;
+
+//a = sqrt(c2-b2);
+//b = 
 var task=[{},
 // step1
 {
-    "description":"Как называется такая клетка крови?",
-	"button":{},
-	"nextStepDelay":1000,
+    "description":"Как называется<br>такая клетка крови?",
+//	"button":{},
+	"nextStepDelay":2000,
 	"test_preloadimg":[
 		'img/art.png'
 	],
 	"test_images":[
-		{"value":""}
+		{},
+		{}
 	],
 	"test_clickable":[
 		{"multiselect":true,"autocheck":true},
@@ -52,8 +298,22 @@ var task=[{},
 		{"value":"тромбоцит"},
 		{"value":"эритроцит", "right":true}
 	]
-
-	
+},
+{
+    "test_fish_dialog":{
+		"text":"Весь день кровь носит меня по организму кругами.<br>Давай нарисуем схему моего путешествия.",
+		"button":"Начать",
+		"buttonclick":function(){
+			$('#field').attr('data-substep','2');
+		}
+	},
+	"test_images":[
+		{},
+		{},
+		{},
+		{"classes":"red-point"},{"classes":"red-point"}
+	],
+	test_test:[]
 }
 ]
 </script>
