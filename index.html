@@ -9,7 +9,7 @@
 <style type="text/css">
 
 #field{
-    background-image:url('source/screens/02-1.jpg');
+    background-image:url('source/screens/02-3.jpg');
 	background-size:100%;
 }
 .red-point{
@@ -130,12 +130,27 @@
     z-index: 9;
 	transition-duration:1s;
 }
-#field[data-task="2"][data-substep="2"] #image1{display:none}
-#field[data-task="2"] #image2{display:none;}
+#field[data-task="2"][data-substep="3"] #image0{display:none;}
+#field[data-task="2"][data-substep="2"] #image1,
+#field[data-task="2"][data-substep="3"] #image1{display:none}
+#field[data-task="2"] #image2,
+#field[data-task="2"] #image4{display:none;}
 #field[data-task="2"][data-substep="2"] #image2{display:block}
-#field[data-task="2"][data-substep="2"] #fishDialog{
+#field[data-task="2"][data-substep="2"] #fishDialog,
+#field[data-task="2"][data-substep="3"] #fishDialog{
     display:none;
 }
+#field[data-task="2"] .draggable,
+#field[data-task="2"] .droppable,
+#field[data-task="2"] #image5{
+    display:none;
+}
+#field[data-task="2"][data-substep="3"] .draggable,
+#field[data-task="2"][data-substep="3"] .droppable,
+#field[data-task="2"][data-substep="3"] #image5{
+    display:block;
+}
+#field[data-task="2"][data-substep="3"] #image4{display:block}
 #field[data-task="2"] .red-point{
     opacity:0;
 }
@@ -149,6 +164,9 @@
     opacity:1;
     top: 255px;
     left: 478px;
+}
+#field[data-task="2"][data-substep="3"] .red-point{
+    opacity:1;
 }
 #field[data-task="2"] #image1{
     background-image:url('images/02-1.jpg');
@@ -164,7 +182,171 @@
     top: 17px;
     left: 280px;
 }
+@keyframes step2image4resize{
+	0%{
+		width: 575px;
+		left: 280px;
+	}
+	100%{
+		width: 460px;
+		left: 458px;
+	}
+}
+#field[data-task="2"][data-substep="3"] #image4{
+    background-image:url('images/02-3.jpg');
+    width: 575px;
+    height: 415px;
+    top: 17px;
+    left: 280px;
+}
+#field[data-task="2"][data-substep="3"] #image4{
+   
+	width: 460px;
+	left: 458px;
+	animation: step2image4resize 1s linear;
+}
+#field[data-task="2"][data-substep="3"] #image3{
+    top: 162px;
+    left: 576px;
+	transition-duration:1s;
+	transition-timing-function:linear;
+}
+#field[data-task="3"] #image0,
+#field[data-task="4"] #image0,
+#field[data-task="4"] #image3{
+    background-image:url('images/03-1.jpg');
+    height: 415px;
+    top: 17px;
+	width: 460px;
+	left: 458px;
+}
+#field[data-task="4"] #image3{
+    opacity:0;
+	background-image:url('images/03-4.jpg');
+}
+#field[data-task="4"].finished #image0{opacity:0;}
 
+#field[data-task="4"].finished #image3{opacity:1;}
+
+#field[data-task="2"][data-substep="3"].finished #image3{transition:0s;}
+#field[data-task="2"][data-substep="3"] #image5,
+#field[data-task="3"] #image1,
+#field[data-task="4"] #image1,
+#field[data-task="5"] #image1{
+    width: 385px;
+    height: 515px;
+    top: 68px;
+    left: 14px;
+	background-color:#F0F0F0;
+}
+#field[data-task="2"][data-substep="3"] #image5 .inner-element,
+#field[data-task="3"] #image1 .inner-element,
+#field[data-task="4"] #image1 .inner-element,
+#field[data-task="5"] #image1 .inner-element{
+    top: 307px;
+    font-size: 28px;
+    line-height: 38px;
+    position: absolute;
+    width: 100%;
+}
+#field[data-task="3"] .red-point,
+#field[data-task="4"] .red-point{
+    top: 183px;
+    left: 496px;
+}
+.draggable,
+.droppable{
+    left: 82px;
+	width: 252px;
+	height:50px;
+}
+#draggable1{
+    top: 10px;
+}
+#draggable2{
+    top: 75px;
+}
+#draggable3{
+    top: 140px;
+}
+#droppable1{
+    top:358px;
+}
+.draggable .inner-element{
+    line-height: 46px;
+    font-size: 28px;
+    text-align: center;
+}
+@keyframes step3fishIntro{
+    0%{
+		top: 183px;
+		left: 496px;
+		width:0px;
+		height:0px;
+		background-size:0px;
+		background-color:#FF7877;
+		box-shadow:transparent 0px 0px 0px 0px;
+	}
+	100%{
+		top: 318px;
+		left: 438px;
+		width: 487px;
+		height: 264px;
+		background-color:#ffffff;
+	}
+}
+@keyframes step3fishOutro{
+    0%{
+		top: 318px;
+		left: 438px;
+		width: 487px;
+		height: 264px;
+		background-color:#ffffff;
+		
+	}
+	100%{
+		top: 183px;
+		left: 496px;
+		width:0px;
+		height:0px;
+		background-size:0px;
+		background-color:#FF7877;
+		box-shadow:transparent 0px 0px 0px 0px;
+	}
+}
+#field[data-task="3"] #image3{
+    top: 318px;
+    left: 438px;
+    width: 487px;
+    height: 264px;
+    border-radius: 5px;
+    background-image: url(images/fish2.png);
+    background-size: 359px;
+	box-shadow: #FFED76 0px 0px 3px 3px;
+	animation:step3fishIntro 1s linear;
+	background-color:#ffffff;
+}
+#field[data-task="3"].finished #image3{
+    top: 183px;
+	left: 496px;
+	width:0px;
+	height:0px;
+    animation:step3fishOutro 1s linear;
+	transition-delay:0.7s;
+	margin-left:-10px;
+	margin-top:-10px;
+}
+#field[data-task="3"].finished #image3:before{
+    content:'';
+	display:block;
+	position:absolute;
+	top: 94px;
+    left: 199px;
+	width:91px;
+	height:91px;
+	background-image:url(images/co2.jpg);
+	background-size:91px;
+}
 @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi){
 	#field[data-task="1"] #image0{
         background-image:url('images/cell@2x.jpg');
@@ -261,13 +443,11 @@ var test_test = {
 		return [];
 	},
 	onStart:function(){
-	setInterval(function(){
+/*	setInterval(function(){
 		roundMovement($('#image3'), 235, 395, 90, true);
 		roundMovement($('#image4'), 235, 660, 190, false);
-	}, 10);
-	setInterval(function(){
-	//	roundMovement($('#image4'), 235, 695, 90, false);
-	}, 20);
+	}, 10); 
+*/
 		//var radius = 90;
 		//var offsetLeft = 395;
 		//var offsetTop = 235;);
@@ -293,27 +473,169 @@ var task=[{},
 		{}
 	],
 	"test_clickable":[
-		{"multiselect":true,"autocheck":true},
+		{"multiselect":false,"autocheck":true},
 		{"value":"лейкоцит"},
 		{"value":"тромбоцит"},
 		{"value":"эритроцит", "right":true}
 	]
 },
+//2
 {
+    "nextStepDelay":3200,
     "test_fish_dialog":{
 		"text":"Весь день кровь носит меня по организму кругами.<br>Давай нарисуем схему моего путешествия.",
 		"button":"Начать",
 		"buttonclick":function(){
 			$('#field').attr('data-substep','2');
+			//roundMovement(el, offsetTop, offsetLeft, radius, direction)
+			
+			var movement = function(){
+				if($('#field').attr('data-task')=='2'){
+					roundMovement($('#image3'), 235, 395, 90, true);
+				}
+				
+			};
+			for(var i=0;i<50;i++){
+				setTimeout(movement, (i*30)+1000);
+			}
+			setTimeout(function(){
+				if($('#field').attr('data-task')=='2'){
+					$('#field').attr('data-substep','3');
+					$('#image3').css({'top':'','left':''});
+				}
+			}, 2500)
 		}
 	},
 	"test_images":[
 		{},
 		{},
 		{},
-		{"classes":"red-point"},{"classes":"red-point"}
+		{"classes":"red-point"},
+		{},
+		{"value":"Малый круг идет<br>из сердца"}
+		/* ,{"classes":"red-point"} */
 	],
-	test_test:[]
+	"test_drag_n_drop":{
+		"draggables":[
+			{"returnable":true/*, "onWrong":"defaultplace"*/},
+			{"value":"к голове"},
+			{"value":"к легким"},
+			{"value":"к другим органам"}
+		],
+		"droppables":[
+			{"checkOnDrop":true},
+			{"values":["к легким"]}
+		]
+	},
+	"onFinish":function(){
+		var movement = function(){
+			if($('#field').attr('data-task')=='2'){
+				roundMovement($('#image3'), 235, 550, 75, true);
+			}
+		};
+		for(var i=0;i<80;i++){
+			setTimeout(movement, (i*30)+1000);
+		}
+		//setInterval(movement, 10);
+	}
+	//test_test:[]
+},
+//3
+{
+   "nextStepDelay":2000,
+    "test_images":[
+	    {},
+		{"value":"Направляясь в легкие,<br>я несу с собой"},
+		{"classes":"red-point"},
+		{}
+	],
+	"test_drag_n_drop":{
+		"draggables":[
+			{"returnable":true/*, "onWrong":"defaultplace"*/},
+			{"value":"воду"},
+			{"value":"кислород"},
+			{"value":"углекислый газ"}
+		],
+		"droppables":[
+			{"checkOnDrop":true},
+			{"values":["углекислый газ"]}
+		]
+	}/*,
+	*/
+},
+//4
+{
+    "nextStepDelay":2000,
+    "test_images":[
+	    {},
+		{"value":"Кровь, в которой много<br>углекислого газа,<br>обычно рисуют"},
+		{"classes":"red-point"},
+		{}
+	],
+	"test_drag_n_drop":{
+		"draggables":[
+			{"returnable":true/*, "onWrong":"defaultplace"*/},
+			{"value":"чёрным цветом"},
+			{"value":"красным цветом"},
+			{"value":"синим цветом"}
+		],
+		"droppables":[
+			{"checkOnDrop":true},
+			{"values":["синим цветом"]}
+		]
+	},
+	"onFinish":function(){
+		var movement = function(){
+			if($('#field').attr('data-task')=='4'){
+				roundMovement($('#image2'), 235, 550, 75, true);
+			}
+		};
+		for(var i=0;i<22;i++){
+			setTimeout(movement, (i*30)+1000);
+		}
+	}
+},
+//5
+{
+    "test_images":[
+	    {},
+		{"value":"Кровь, в которой много<br>углекислого газа,<br>обычно рисуют"},
+		{"classes":"red-point"},
+		{}
+	],
+	"test_drag_n_drop":{
+		"draggables":[
+			{"returnable":true/*, "onWrong":"defaultplace"*/},
+			{"value":"чёрным цветом"},
+			{"value":"красным цветом"},
+			{"value":"синим цветом"}
+		],
+		"droppables":[
+			{"checkOnDrop":true},
+			{"values":["синим цветом"]}
+		]
+	}
+},
+//6
+{
+    "test_images":[
+	    {},
+		{"value":"Кровь, в которой много<br>углекислого газа,<br>обычно рисуют"},
+		{"classes":"red-point"},
+		{}
+	],
+	"test_drag_n_drop":{
+		"draggables":[
+			{"returnable":true/*, "onWrong":"defaultplace"*/},
+			{"value":"чёрным цветом"},
+			{"value":"красным цветом"},
+			{"value":"синим цветом"}
+		],
+		"droppables":[
+			{"checkOnDrop":true},
+			{"values":["синим цветом"]}
+		]
+	}
 }
 ]
 </script>
