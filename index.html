@@ -15,8 +15,8 @@
 .red-point{
     width:20px;
 	height:20px;
-	margin-top:-20px;
-	margin-left:-20px;
+	margin-top:-10px;
+	margin-left:-10px;
 	border-radius:10px;
 	background-color:#FF7877;
 	z-index: 10;
@@ -90,6 +90,14 @@
     border-radius: 5px;
 	background-color:#F0F0F0;
 }
+#field[data-task="6"] #fishDialog{
+    width: 506px;
+    left: 226px;
+    top: 450px;
+}
+#field[data-task="6"][data-substep="2"] #fishDialog{
+    display:none;
+}
 #fishDialog:before{
 	content:'';
     background-image:url('images/grey-tail.png');
@@ -123,8 +131,8 @@
     left: -206px;
 }
 #field[data-task="2"][data-substep="2"] #image0{
-    width: 10px;
-    height: 10px;
+    width: 0px;
+    height: 0px;
     top: 240px;
     left: 460px;
     z-index: 9;
@@ -156,7 +164,7 @@
 }
 @keyframes step2substep2anim {
 	0%{opacity:0;}
-	99%{opacity:0;}
+	90%{opacity:0;}
 	100%{opacity:1;}
 }
 #field[data-task="2"][data-substep="2"] .red-point{
@@ -168,12 +176,44 @@
 #field[data-task="2"][data-substep="3"] .red-point{
     opacity:1;
 }
-#field[data-task="2"] #image1{
+#field[data-task="2"] #image1,
+#field[data-task="6"] #image3
+{
     background-image:url('images/02-1.jpg');
     width: 575px;
     height: 415px;
     top: 17px;
     left: 280px;
+}
+@keyframes step6img3anim{
+	0%{
+		background-image:url('images/04-1.jpg');
+	}
+	99.9%{background-image:url('images/04-1.jpg');}
+	100%{
+		background-image:url('images/04-3.jpg');
+	}
+}
+#field[data-task="6"] #image3{
+    background-size:auto 100%;
+    background-image:url('images/04-3.jpg');
+/*    width: 637px;
+    height: 429px;
+    top: 35px;
+    left: 202px;
+*/
+	width: 667px;
+    height: 429px;
+    top: 35px;
+    left: 173px;
+	background-position: top right;
+	animation:step6img3anim 1s linear;
+}
+#field[data-task="6"][data-substep="2"] #image3{
+    background-size:100%;
+    width: 480px;
+    left: 438px;
+    animation: step2image4resize 1s linear;
 }
 #field[data-task="2"] #image2{
     background-image:url('images/02-2.jpg');
@@ -206,23 +246,37 @@
 	animation: step2image4resize 1s linear;
 }
 #field[data-task="2"][data-substep="3"] #image3{
-    top: 162px;
-    left: 576px;
+    top: 152px;
+    left: 566px;
 	transition-duration:1s;
 	transition-timing-function:linear;
 }
 #field[data-task="3"] #image0,
 #field[data-task="4"] #image0,
-#field[data-task="4"] #image3{
+#field[data-task="4"] #image3,
+#field[data-task="5"] #image0{
     background-image:url('images/03-1.jpg');
     height: 415px;
     top: 17px;
 	width: 460px;
 	left: 458px;
 }
-#field[data-task="4"] #image3{
+#field[data-task="4"] #image3,
+#field[data-task="5"] #image0{
     opacity:0;
 	background-image:url('images/03-4.jpg');
+}
+#field[data-task="5"] #image0{opacity:1}
+#field[data-task="5"] #image3{
+    top: 399px;
+    left: 332px;
+}
+#field[data-task="5"] #image4{
+    top: 447px;
+    left: 62px;
+}
+#field[data-task="5"] #image4 .inner-element{
+    width:300px;
 }
 #field[data-task="4"].finished #image0{opacity:0;}
 
@@ -232,7 +286,8 @@
 #field[data-task="2"][data-substep="3"] #image5,
 #field[data-task="3"] #image1,
 #field[data-task="4"] #image1,
-#field[data-task="5"] #image1{
+#field[data-task="5"] #image1,
+#field[data-task="6"] #image1{
     width: 385px;
     height: 515px;
     top: 68px;
@@ -242,17 +297,58 @@
 #field[data-task="2"][data-substep="3"] #image5 .inner-element,
 #field[data-task="3"] #image1 .inner-element,
 #field[data-task="4"] #image1 .inner-element,
-#field[data-task="5"] #image1 .inner-element{
+#field[data-task="5"] #image1 .inner-element,
+#field[data-task="5"] #image3 .inner-element,
+#field[data-task="5"] #image4 .inner-element,
+#field[data-task="6"] #image1 .inner-element,
+#field[data-task="6"] #image4 .inner-element{
     top: 307px;
     font-size: 28px;
     line-height: 38px;
     position: absolute;
     width: 100%;
 }
+#field[data-task="6"] #image1 .inner-element{top: 284px;}
+#field[data-task="5"] #image3 .inner-element,
+#field[data-task="5"] #image4 .inner-element,
+#field[data-task="5"] #image4 .inner-element{
+    top:0px;
+}
+#field[data-task="6"] #image4{
+    top: 448px;
+    left: 58px;
+}
+#field[data-task="6"] #dragNDropContainer{
+    height:450px;
+}
+#field[data-task="5"] #image4 .inner-element,
+#field[data-task="6"] #image4 .inner-element{width:300px;}
+#field[data-task="5"] #image1 .inner-element{
+    top: 283px;
+}
+#field[data-task="5"] #droppable1{    top: 296px;}
 #field[data-task="3"] .red-point,
 #field[data-task="4"] .red-point{
-    top: 183px;
-    left: 496px;
+    top: 173px;
+    left: 486px;
+}
+#field[data-task="5"] .red-point{
+    top: 225px;
+    left: 465px;
+}
+#field[data-task="6"] .red-point{
+    display:none;
+}
+@keyframes step6redpoint{
+    0%{opacity:0}
+	95%{opacity:0}
+	100%{opacity:1}
+}
+#field[data-task="6"][data-substep="2"] .red-point{
+    display:block;
+    top: 187px;
+    left: 466px;
+	animation: step6redpoint 2s linear;
 }
 .draggable,
 .droppable{
@@ -272,6 +368,12 @@
 #droppable1{
     top:358px;
 }
+#field[data-task="6"] #droppable1{
+    top: 296px;
+}
+#field[data-task="6"] #droppable2{
+    top: 392px;
+}
 .draggable .inner-element{
     line-height: 46px;
     font-size: 28px;
@@ -286,6 +388,8 @@
 		background-size:0px;
 		background-color:#FF7877;
 		box-shadow:transparent 0px 0px 0px 0px;
+		margin-top:-10px;
+		margin-left:-10px;
 	}
 	100%{
 		top: 318px;
@@ -312,9 +416,81 @@
 		background-size:0px;
 		background-color:#FF7877;
 		box-shadow:transparent 0px 0px 0px 0px;
+		margin-top:-10px;
+		margin-left:-10px;
 	}
 }
-#field[data-task="3"] #image3{
+
+@keyframes step5fishIntro{
+    0%{
+		top: 235px;
+        left: 475px;
+		width:0px;
+		height:0px;
+		background-size:0px;
+		background-color:#FF7877;
+		box-shadow:transparent 0px 0px 0px 0px;
+		margin-top:-10px;
+		margin-left:-10px;
+	}
+	100%{
+		top: 318px;
+		left: 438px;
+		width: 487px;
+		height: 264px;
+		background-color:#ffffff;
+	}
+}
+@keyframes step5fishOutro{
+    0%{
+		top: 318px;
+		left: 438px;
+		width: 487px;
+		height: 264px;
+		background-color:#ffffff;
+		
+	}
+	100%{
+		top: 235px;
+		left: 475px;
+		width:0px;
+		height:0px;
+		background-size:0px;
+		background-color:#FF7877;
+		box-shadow:transparent 0px 0px 0px 0px;
+		margin-top:-10px;
+		margin-left:-10px;
+	}
+}
+@keyframes step5videosize{
+	0%{
+		width:0px;
+		height:0px;
+	/*
+		margin-top:137px;
+		margin-left:245px;
+	*/
+	}
+	100%{
+		width: 490px;
+		height: 275px;
+	}
+}
+@keyframes step5videosizeinvert{
+	0%{
+		width: 490px;
+		height: 275px;
+	}
+	100%{
+		width:0px;
+		height:0px;
+	}
+	
+}
+#field[data-task="3"] #image3,
+#field[data-task="5"] #videoAnimationContainer,
+#field[data-task="6"][data-substep="2"] #videoAnimationContainer{
+    position:absolute;
     top: 318px;
     left: 438px;
     width: 487px;
@@ -325,6 +501,36 @@
 	box-shadow: #FFED76 0px 0px 3px 3px;
 	animation:step3fishIntro 1s linear;
 	background-color:#ffffff;
+}
+#field[data-task="6"] #videoAnimationContainer{opacity:0;}
+#field[data-task="6"][data-substep="2"] #videoAnimationContainer{display:block;}
+#field[data-task="5"] #videoAnimationContainer,
+#field[data-task="6"][data-substep="2"] #videoAnimationContainer{
+    opacity:1;
+    animation:step5fishIntro 1s linear;
+	overflow:hidden;
+	z-index:1;
+	background-image: none;/**/
+}
+#field[data-task="6"][data-substep="2"] #videoAnimationContainer{
+	transition-delay:2s;
+	animation-delay:2s;
+}
+#field[data-task="5"].finished #videoAnimationContainer,
+#field[data-task="6"][data-substep="2"].finished #videoAnimationContainer{
+    animation:step5fishOutro 1s linear;
+	top: 235px;
+		left: 475px;
+		width:0px;
+		height:0px;
+}
+#videoAnimation{
+    width: 490px;
+    height: 275px;
+	animation: step5videosize 1s linear;
+}
+#field.finished #videoAnimation{
+	animation:step5videosizeinvert 1s linear;
 }
 #field[data-task="3"].finished #image3{
     top: 183px;
@@ -434,6 +640,20 @@ var test_fish_dialog = {
 	}
 };
 
+var test_video_anim = {
+    create:function(input){
+		result = [];
+		var container = $('<div></div>').attr('id', 'videoAnimationContainer');
+		var video = $('<video></video>').attr({'id':'videoAnimation','src':input.src});
+		container.append(video);
+		result.push(container);
+		return result;
+	},
+	onStart:function(){
+		$('#videoAnimation')[0].play();
+	}
+};
+
 var test_test = {
     create:function(){
 		
@@ -491,7 +711,7 @@ var task=[{},
 			
 			var movement = function(){
 				if($('#field').attr('data-task')=='2'){
-					roundMovement($('#image3'), 235, 395, 90, true);
+					roundMovement($('#image3'), 225, 395, 90, true);
 				}
 				
 			};
@@ -530,7 +750,7 @@ var task=[{},
 	"onFinish":function(){
 		var movement = function(){
 			if($('#field').attr('data-task')=='2'){
-				roundMovement($('#image3'), 235, 550, 75, true);
+				roundMovement($('#image3'), 225, 540, 75, true);
 			}
 		};
 		for(var i=0;i<80;i++){
@@ -587,54 +807,71 @@ var task=[{},
 	"onFinish":function(){
 		var movement = function(){
 			if($('#field').attr('data-task')=='4'){
-				roundMovement($('#image2'), 235, 550, 75, true);
+				roundMovement($('#image2'), 225, 540, 75, true);
 			}
 		};
-		for(var i=0;i<22;i++){
+		for(var i=0;i<21;i++){
 			setTimeout(movement, (i*30)+1000);
 		}
 	}
 },
 //5
 {
+    "nextStepDelay":2000,
+    "test_video_anim":{"src":"images/03-1_980х550.mp4"},
     "test_images":[
 	    {},
-		{"value":"Кровь, в которой много<br>углекислого газа,<br>обычно рисуют"},
+		{"value":"Легкие оплетены тонкими"},
 		{"classes":"red-point"},
-		{}
+		{"value":","},
+		{"value":"через которые я едва<br>протискиваюсь."}
 	],
 	"test_drag_n_drop":{
 		"draggables":[
 			{"returnable":true/*, "onWrong":"defaultplace"*/},
-			{"value":"чёрным цветом"},
-			{"value":"красным цветом"},
-			{"value":"синим цветом"}
+			{"value":"связками"},
+			{"value":"капиллярами"},
+			{"value":"хрящами"}
 		],
 		"droppables":[
 			{"checkOnDrop":true},
-			{"values":["синим цветом"]}
+			{"values":["капиллярами"]}
 		]
 	}
 },
 //6
 {
+    "test_video_anim":{"src":"images/03-4_980х550.mp4"},
     "test_images":[
 	    {},
-		{"value":"Кровь, в которой много<br>углекислого газа,<br>обычно рисуют"},
+		{"value":"Там я отдаю"},
 		{"classes":"red-point"},
-		{}
+		{},
+		{"value":"и принимаю"}
 	],
 	"test_drag_n_drop":{
 		"draggables":[
 			{"returnable":true/*, "onWrong":"defaultplace"*/},
-			{"value":"чёрным цветом"},
-			{"value":"красным цветом"},
-			{"value":"синим цветом"}
+			{"value":"кислород"},
+			{"value":"углекислый газ"},
+			{"value":"воду"}
 		],
 		"droppables":[
 			{"checkOnDrop":true},
-			{"values":["синим цветом"]}
+			{"values":["углекислый газ"]},
+			{"values":["кислород"]}
 		]
+	},
+	"test_fish_dialog":{
+		"text":"На схеме нарисуем это так.",
+		"button":"Дальше",
+		"buttonclick":function(){
+			$('#field').attr('data-substep','2');
+			var video = $('#videoAnimation')[0];
+			video.pause();
+			video.currentTime = 0;
+			video.play();
+		}
 	}
 }
 ]
