@@ -209,12 +209,39 @@
 	background-position: top right;
 	animation:step6img3anim 1s linear;
 }
+#field[data-task="6"] #dragNDropContainer,
+#field[data-task="6"] #image1{
+    display:none;
+}
+#field[data-task="6"][data-substep="2"] #dragNDropContainer,
+#field[data-task="6"][data-substep="2"]  #image1{
+    display:block;
+}
 #field[data-task="6"][data-substep="2"] #image3{
     background-size:100%;
     width: 480px;
     left: 438px;
-    animation: step2image4resize 1s linear;
+    top: 72px;
+    animation: step6image4resize 1s linear;
 }
+#field[data-task="7"] #image3,
+#field[data-task="8"] #image3{
+    background-size:100%;
+	background-image:url('images/05-2.jpg');
+    width: 480px;
+    height: 429px;
+    left: 438px;
+    top: 10px;
+}
+#field[data-task="8"] #image3{
+    background-image:url('images/05-3.jpg');
+}
+#field[data-task="7"] #image2,
+#field[data-task="8"] #image2{
+    top: 276px;
+    left: 483px;
+}
+
 #field[data-task="2"] #image2{
     background-image:url('images/02-2.jpg');
     width: 575px;
@@ -230,6 +257,17 @@
 	100%{
 		width: 460px;
 		left: 458px;
+	}
+}
+@keyframes step6image4resize{
+	0%{
+		width: 575px;
+		left: 280px;
+	}
+	100%{
+		width: 460px;
+		left: 458px;
+		top: 72px;
 	}
 }
 #field[data-task="2"][data-substep="3"] #image4{
@@ -287,7 +325,9 @@
 #field[data-task="3"] #image1,
 #field[data-task="4"] #image1,
 #field[data-task="5"] #image1,
-#field[data-task="6"] #image1{
+#field[data-task="6"] #image1,
+#field[data-task="7"] #image1,
+#field[data-task="8"] #image1{
     width: 385px;
     height: 515px;
     top: 68px;
@@ -301,7 +341,9 @@
 #field[data-task="5"] #image3 .inner-element,
 #field[data-task="5"] #image4 .inner-element,
 #field[data-task="6"] #image1 .inner-element,
-#field[data-task="6"] #image4 .inner-element{
+#field[data-task="6"] #image4 .inner-element,
+#field[data-task="7"] #image1 .inner-element,
+#field[data-task="8"] #image1 .inner-element{
     top: 307px;
     font-size: 28px;
     line-height: 38px;
@@ -309,11 +351,13 @@
     width: 100%;
 }
 #field[data-task="6"] #image1 .inner-element{top: 284px;}
+#field[data-task="7"] #image1 .inner-element{top: 283px;}
 #field[data-task="5"] #image3 .inner-element,
 #field[data-task="5"] #image4 .inner-element,
 #field[data-task="5"] #image4 .inner-element{
     top:0px;
 }
+#field[data-task="7"] #droppable1{top: 371px;}
 #field[data-task="6"] #image4{
     top: 448px;
     left: 58px;
@@ -322,7 +366,7 @@
     height:450px;
 }
 #field[data-task="5"] #image4 .inner-element,
-#field[data-task="6"] #image4 .inner-element{width:300px;}
+#field[data-task="6"] #image4 .inner-element{width:300px;top:0px;}
 #field[data-task="5"] #image1 .inner-element{
     top: 283px;
 }
@@ -462,6 +506,62 @@
 		margin-left:-10px;
 	}
 }
+
+@keyframes step7fishIntro{
+    0%{
+	    top: 276px;
+        left: 483px;
+		width:0px;
+		height:0px;
+		background-size:0px;
+		background-color:#FF7877;
+		box-shadow:transparent 0px 0px 0px 0px;
+		margin-top:-10px;
+		margin-left:-10px;
+	}
+	100%{
+		top: 318px;
+		left: 438px;
+		width: 487px;
+		height: 264px;
+		background-color:#ffffff;
+	}
+}
+@keyframes step7fishOutro{
+    0%{
+		top: 318px;
+		left: 438px;
+		width: 487px;
+		height: 264px;
+		background-color:#ffffff;
+		
+	}
+	100%{
+	    top: 276px;
+        left: 483px;
+		width:0px;
+		height:0px;
+		background-size:0px;
+		background-color:#FF7877;
+		box-shadow:transparent 0px 0px 0px 0px;
+		margin-top:-10px;
+		margin-left:-10px;
+	}
+}
+
+#field[data-task="7"].finished #image4{
+    top: 276px;
+    left: 483px;
+	width:0px;
+	height:0px;
+	background-size:0px;
+	background-color:#FF7877;
+	/*box-shadow:transparent 0px 0px 0px 0px;*/
+	margin-top:-10px;
+	margin-left:-10px;
+    animation:step7fishOutro 1s linear;
+}
+
 @keyframes step5videosize{
 	0%{
 		width:0px;
@@ -488,6 +588,7 @@
 	
 }
 #field[data-task="3"] #image3,
+#field[data-task="7"] #image4,
 #field[data-task="5"] #videoAnimationContainer,
 #field[data-task="6"][data-substep="2"] #videoAnimationContainer{
     position:absolute;
@@ -501,6 +602,14 @@
 	box-shadow: #FFED76 0px 0px 3px 3px;
 	animation:step3fishIntro 1s linear;
 	background-color:#ffffff;
+}
+#field[data-task="7"] #image4{
+    top: 318px;
+	left: 438px;
+	width: 487px;
+	height: 264px;
+	background-color:#ffffff;
+    animation:step7fishIntro 1s linear;
 }
 #field[data-task="6"] #videoAnimationContainer{opacity:0;}
 #field[data-task="6"][data-substep="2"] #videoAnimationContainer{display:block;}
@@ -841,6 +950,7 @@ var task=[{},
 },
 //6
 {
+    "nextStepDelay":2000,
     "test_video_anim":{"src":"images/03-4_980х550.mp4"},
     "test_images":[
 	    {},
@@ -871,6 +981,74 @@ var task=[{},
 			video.pause();
 			video.currentTime = 0;
 			video.play();
+		}
+	},
+	onFinish:function(){
+		var movement = function(){
+			if($('#field').attr('data-task')=='6'){
+				roundMovement($('#image2'), 225, 540, 75, true);
+			}
+		};
+		for(var i=0;i<21;i++){
+			setTimeout(movement, (i*30)+1000);
+		}
+	}
+},
+//7
+{
+    "nextStepDelay":2000,
+    "test_images":[
+	    {},
+		{"value":"Кровь, насыщенную<br>кислородом,<br>обычно рисуют"},
+		{"classes":"red-point"},
+		{},
+		{"value":""}
+	],
+	"test_drag_n_drop":{
+		"draggables":[
+			{"returnable":true/*, "onWrong":"defaultplace"*/},
+			{"value":"чёрным цветом"},
+			{"value":"красным цветом"},
+			{"value":"синим цветом"}
+		],
+		"droppables":[
+			{"checkOnDrop":true},
+			{"values":["красным цветом"]}
+		]
+	}
+},
+//8
+{
+    "nextStepDelay":2000,
+    "test_images":[
+	    {},
+		{"value":"Вместе с кислородом<br>я возвращаюсь в"},
+		{"classes":"red-point"},
+		{},
+		{"value":""}
+	],
+	"test_drag_n_drop":{
+		"draggables":[
+			{"returnable":true/*, "onWrong":"defaultplace"*/},
+			{"value":"сердце"},
+			{"value":"лёгкие"},
+			{"value":"кровь"}
+		],
+		"droppables":[
+			{"checkOnDrop":true},
+			{"values":["сердце"]}
+		]
+	},
+	onStart:function(){
+		console.log('hz pochemu ne rabotaet 1');
+		var movement = function(){
+			if($('#field').attr('data-task')=='8'){
+				console.log('hz pochemu ne rabotaet 2');
+				roundMovement($('#image2'), 225, 540, 75, true);
+			}
+		};
+		for(var i=0;i<21;i++){
+			setTimeout(movement, (i*30)+1000);
 		}
 	}
 }
