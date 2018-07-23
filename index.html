@@ -225,7 +225,9 @@
     animation: step6image4resize 1s linear;
 }
 #field[data-task="7"] #image3,
-#field[data-task="8"] #image3{
+#field[data-task="8"] #image3,
+#field[data-task="9"] #image3,
+#field[data-task="10"] #image3{
     background-size:100%;
 	background-image:url('images/05-2.jpg');
     width: 480px;
@@ -236,12 +238,29 @@
 #field[data-task="8"] #image3{
     background-image:url('images/05-3.jpg');
 }
-#field[data-task="7"] #image2,
-#field[data-task="8"] #image2{
+#field[data-task="9"] #image3{
+    background-image:url('images/06-1.jpg');
+}
+#field[data-task="10"] #image3{
+    background-image:url('images/06-2.jpg');
+}
+#field[data-task="7"] #image2{
     top: 276px;
     left: 483px;
 }
 
+#field[data-task="8"] #image2{
+    top: 300px;
+    left: 531px;
+}
+#field[data-task="9"] #image2{
+    top: 71px;
+    left: 764px;
+}
+#field[data-task="10"] #image2{
+    top: 130px;
+    left: 881px;
+}
 #field[data-task="2"] #image2{
     background-image:url('images/02-2.jpg');
     width: 575px;
@@ -327,7 +346,9 @@
 #field[data-task="5"] #image1,
 #field[data-task="6"] #image1,
 #field[data-task="7"] #image1,
-#field[data-task="8"] #image1{
+#field[data-task="8"] #image1,
+#field[data-task="9"] #image1,
+#field[data-task="10"] #image1{
     width: 385px;
     height: 515px;
     top: 68px;
@@ -343,26 +364,41 @@
 #field[data-task="6"] #image1 .inner-element,
 #field[data-task="6"] #image4 .inner-element,
 #field[data-task="7"] #image1 .inner-element,
-#field[data-task="8"] #image1 .inner-element{
+#field[data-task="8"] #image1 .inner-element,
+#field[data-task="9"] #image1 .inner-element,
+#field[data-task="9"] #image4 .inner-element,
+#field[data-task="10"] #image1 .inner-element{
     top: 307px;
     font-size: 28px;
     line-height: 38px;
     position: absolute;
     width: 100%;
 }
-#field[data-task="6"] #image1 .inner-element{top: 284px;}
+#field[data-task="10"] #image1 .inner-element{top: 266px;}
+#field[data-task="6"] #image1 .inner-element,
+#field[data-task="9"] #image1 .inner-element{top: 284px;}
 #field[data-task="7"] #image1 .inner-element{top: 283px;}
 #field[data-task="5"] #image3 .inner-element,
 #field[data-task="5"] #image4 .inner-element,
-#field[data-task="5"] #image4 .inner-element{
+#field[data-task="8"] #image4 .inner-element{
     top:0px;
+}
+#field[data-task="9"] #image4 .inner-element{
+    width: 300px;
+    top: 0px;
+}
+
+#field[data-task="9"] #image4{
+    top: 448px;
+    left: 58px;
 }
 #field[data-task="7"] #droppable1{top: 371px;}
 #field[data-task="6"] #image4{
     top: 448px;
     left: 58px;
 }
-#field[data-task="6"] #dragNDropContainer{
+#field[data-task="6"] #dragNDropContainer,
+#field[data-task="10"] #dragNDropContainer{
     height:450px;
 }
 #field[data-task="5"] #image4 .inner-element,
@@ -412,7 +448,11 @@
 #droppable1{
     top:358px;
 }
-#field[data-task="6"] #droppable1{
+#field[data-task="10"] #droppable1{
+    top: 392px;
+}
+#field[data-task="6"] #droppable1,
+#field[data-task="9"] #droppable1{
     top: 296px;
 }
 #field[data-task="6"] #droppable2{
@@ -590,7 +630,8 @@
 #field[data-task="3"] #image3,
 #field[data-task="7"] #image4,
 #field[data-task="5"] #videoAnimationContainer,
-#field[data-task="6"][data-substep="2"] #videoAnimationContainer{
+#field[data-task="6"][data-substep="2"] #videoAnimationContainer,
+#field[data-task="10"] #image0{
     position:absolute;
     top: 318px;
     left: 438px;
@@ -602,6 +643,62 @@
 	box-shadow: #FFED76 0px 0px 3px 3px;
 	animation:step3fishIntro 1s linear;
 	background-color:#ffffff;
+}
+
+
+@keyframes step10fishIntro{
+    0%{
+		top: 130px;
+		left: 881px;
+		width:0px;
+		height:0px;
+		background-size:0px;
+		background-color:#FF7877;
+		box-shadow:transparent 0px 0px 0px 0px;
+		margin-top:-10px;
+		margin-left:-10px;
+	}
+	100%{
+		top: 318px;
+		left: 438px;
+		width: 487px;
+		height: 264px;
+		background-color:#ffffff;
+	}
+}
+@keyframes step10fishOutro{
+    0%{
+		top: 318px;
+		left: 438px;
+		width: 487px;
+		height: 264px;
+		background-color:#ffffff;
+		
+	}
+	100%{
+		top: 130px;
+		left: 881px;
+		width:0px;
+		height:0px;
+		background-size:0px;
+		background-color:#FF7877;
+		box-shadow:transparent 0px 0px 0px 0px;
+		margin-top:-10px;
+		margin-left:-10px;
+	}
+}
+#field[data-task="10"] #image0{
+    z-index: 1;
+	background-image:url(images/vessels.jpg);
+	background-size:491px;
+	animation:step10fishIntro 1s linear;
+}
+#field[data-task="10"].finished #image0{
+    top: 130px;
+	left: 881px;
+	width:0px;
+	height:0px;;
+	animation:step10fishOutro 1s linear;
 }
 #field[data-task="7"] #image4{
     top: 318px;
@@ -683,6 +780,44 @@
 </style>
 
 <script type="text/javascript">
+function roundMovementBig(el, offsetTop, offsetLeft, radius, direction){
+    var x = el.position().left-offsetLeft;
+	if(x>radius){
+		x = radius;
+	} else if(x<-radius){
+		x=-radius;
+	}
+	if(
+		(!el.data('plusplus'))
+	){
+		x++;
+	} else {
+		x--;
+	}
+	var y2 = (radius*radius) - (x*x);
+		if(y2<0){
+			if(!el.data('plusplus')){
+				x = radius;
+				el.data('plusplus','true');
+			} else {
+				x = -1*radius;
+				el.data('plusplus','');
+			}
+		
+		}
+		if((!el.data('plusplus') && direction)
+			|| (el.data('plusplus') && !direction)
+		){
+			el.css('top', offsetTop+Math.sqrt(y2));
+		} else {
+			el.css('top', offsetTop-Math.sqrt(y2));
+		}
+		
+			
+		el.css('left', x+offsetLeft);
+	
+}
+
 function roundMovement(el, offsetTop, offsetLeft, radius, direction){
         //var radius = 90;
 		//var offsetLeft = 395;
@@ -788,6 +923,23 @@ var test_test = {
 
 //a = sqrt(c2-b2);
 //b = 
+
+var task8start = {
+    create:function(){return [];},
+	onStart:function(){
+		//console.log('hz pochemu ne rabotaet 1');
+		var movement = function(){
+			if($('#field').attr('data-task')=='8'){
+				//console.log('hz pochemu ne rabotaet 2');
+				roundMovement($('#image2'), 225, 540, 75, true);
+			}
+		};
+		for(var i=0;i<21;i++){
+			setTimeout(movement, (i*30)+1000);
+		}
+	}
+}
+
 var task=[{},
 // step1
 {
@@ -846,7 +998,7 @@ var task=[{},
 	],
 	"test_drag_n_drop":{
 		"draggables":[
-			{"returnable":true/*, "onWrong":"defaultplace"*/},
+			{"returnable":true, "onWrong":"defaultplace"/**/},
 			{"value":"к голове"},
 			{"value":"к легким"},
 			{"value":"к другим органам"}
@@ -880,7 +1032,7 @@ var task=[{},
 	],
 	"test_drag_n_drop":{
 		"draggables":[
-			{"returnable":true/*, "onWrong":"defaultplace"*/},
+			{"returnable":true, "onWrong":"defaultplace"/**/},
 			{"value":"воду"},
 			{"value":"кислород"},
 			{"value":"углекислый газ"}
@@ -903,7 +1055,7 @@ var task=[{},
 	],
 	"test_drag_n_drop":{
 		"draggables":[
-			{"returnable":true/*, "onWrong":"defaultplace"*/},
+			{"returnable":true, "onWrong":"defaultplace"/**/},
 			{"value":"чёрным цветом"},
 			{"value":"красным цветом"},
 			{"value":"синим цветом"}
@@ -937,7 +1089,7 @@ var task=[{},
 	],
 	"test_drag_n_drop":{
 		"draggables":[
-			{"returnable":true/*, "onWrong":"defaultplace"*/},
+			{"returnable":true, "onWrong":"defaultplace"/**/},
 			{"value":"связками"},
 			{"value":"капиллярами"},
 			{"value":"хрящами"}
@@ -961,7 +1113,7 @@ var task=[{},
 	],
 	"test_drag_n_drop":{
 		"draggables":[
-			{"returnable":true/*, "onWrong":"defaultplace"*/},
+			{"returnable":true, "onWrong":"defaultplace"/**/},
 			{"value":"кислород"},
 			{"value":"углекислый газ"},
 			{"value":"воду"}
@@ -1006,7 +1158,7 @@ var task=[{},
 	],
 	"test_drag_n_drop":{
 		"draggables":[
-			{"returnable":true/*, "onWrong":"defaultplace"*/},
+			{"returnable":true, "onWrong":"defaultplace"/**/},
 			{"value":"чёрным цветом"},
 			{"value":"красным цветом"},
 			{"value":"синим цветом"}
@@ -1015,6 +1167,17 @@ var task=[{},
 			{"checkOnDrop":true},
 			{"values":["красным цветом"]}
 		]
+	},
+	onFinish:function(){
+		$('#image2').data('plusplus','true');
+		var movement = function(){
+			if($('#field').attr('data-task')=='7'){
+				roundMovement($('#image2'), 225, 540, 75, true);
+			}
+		};
+		for(var i=0;i<48;i++){
+			setTimeout(movement, (i*30)+1000);
+		}
 	}
 },
 //8
@@ -1029,7 +1192,7 @@ var task=[{},
 	],
 	"test_drag_n_drop":{
 		"draggables":[
-			{"returnable":true/*, "onWrong":"defaultplace"*/},
+			{"returnable":true, "onWrong":"defaultplace"/**/},
 			{"value":"сердце"},
 			{"value":"лёгкие"},
 			{"value":"кровь"}
@@ -1039,16 +1202,82 @@ var task=[{},
 			{"values":["сердце"]}
 		]
 	},
-	onStart:function(){
-		console.log('hz pochemu ne rabotaet 1');
+	onFinish:function(){
+		$('#image2').data('plusplus','true');
 		var movement = function(){
 			if($('#field').attr('data-task')=='8'){
-				console.log('hz pochemu ne rabotaet 2');
 				roundMovement($('#image2'), 225, 540, 75, true);
 			}
 		};
-		for(var i=0;i<21;i++){
+		for(var i=0;i<75;i++){
 			setTimeout(movement, (i*30)+1000);
+		}
+	}
+}, 
+//9
+{
+    "nextStepDelay":3500,
+    "test_images":[
+	    {},
+		{"value":"Из сердца другая"},
+		{"classes":"red-point"},
+		{},
+		{"value":"направляет меня<br>в большой круг."}
+	],
+	"test_drag_n_drop":{
+		"draggables":[
+			{"returnable":true, "onWrong":"defaultplace"/**/},
+			{"value":"система органов"},
+			{"value":"артерия"},
+			{"value":"вена"}
+		],
+		"droppables":[
+			{"checkOnDrop":true},
+			{"values":["артерия"]}
+		]
+	},
+	"onFinish":function(){
+		$('#image2').data('plusplus','true');
+		var movement = function(){
+			if($('#field').attr('data-task')=='9'){
+				roundMovement($('#image2'), 225, 765, 150, false);
+			}
+		};
+		for(var i=0;i<117;i++){
+			setTimeout(movement, (i*30)+1000);
+		}
+	}
+},
+
+{
+    "nextStepDelay":2000,
+	    "test_images":[
+	    {},
+		{"value":"Кровь разносится<br>по всему телу.<br>Сосуды ветвятся<br>и становятся всё"},
+		{"classes":"red-point"},
+		{}//,
+	//	{"value":"направляет меня<br>в большой круг."}
+	],
+	"test_drag_n_drop":{
+		"draggables":[
+			{"returnable":true, "onWrong":"defaultplace"/**/},
+			{"value":"тоньше"},
+			{"value":"толще"},
+			{"value":"крепче"}
+		],
+		"droppables":[
+			{"checkOnDrop":true},
+			{"values":["тоньше"]}
+		]
+	}
+},
+//11
+{
+	"test_fish_dialog":{
+		"text":"На схеме нарисуем это так.",
+		"button":"Дальше",
+		"buttonclick":function(){
+			
 		}
 	}
 }
