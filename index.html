@@ -9,8 +9,77 @@
 <style type="text/css">
 
 #field{
-    background-image:url('source/screens/02-3.jpg');
+/*    background-image:url('source/screens/06-3.jpg');*/
 	background-size:100%;
+}
+.step{z-index:1;}
+@-webkit-keyframes zadanie-vypolneno-12{
+	0%{opacity:0;}
+	6%{
+		opacity:0;
+		left: 652px;
+		width:38px;
+		font-size:0px;
+		background-color:#4EE2D6;
+		box-shadow: 0px 0px 6px 4px rgba(36,221,208,1);
+	}
+	6.1%{opacity:1}
+	15%{
+		left:36px;
+		width:206px;
+		font-size:0px;
+		box-shadow: 0px 0px 6px 4px rgba(36,221,208,1);
+	}
+	15.01%{
+		font-size:17px;
+	}
+	25%{box-shadow: 0px 0px 0px 0 rgba(36,221,208,1);}
+	59%{
+		background-color:#24ddd0;
+	}
+}
+@keyframes zadanie-vypolneno-12{
+	0%{opacity:0;}
+	6%{
+		opacity:0;
+		left: 652px;
+		width:38px;
+		font-size:0px;
+		background-color:#4EE2D6;
+		box-shadow: 0px 0px 6px 4px rgba(36,221,208,1);
+	}
+	6.1%{opacity:1}
+	15%{
+		left:36px;
+		width:206px;
+		font-size:0px;
+		box-shadow: 0px 0px 6px 4px rgba(36,221,208,1);
+	}
+	15.01%{
+		font-size:17px;
+	}
+	25%{box-shadow: 0px 0px 0px 0 rgba(36,221,208,1);}
+	59%{
+		background-color:#24ddd0;
+	}
+}
+#field[data-task="12"].finished .step.right, 
+#field[data-task="12"].finished .step.step-animation.right {
+    animation-delay: 8.8s;
+    transition-delay: 9s;
+	transition-duration:1s;
+	opacity: 0;
+	
+
+}
+#field[data-task="12"].finished .final-text{
+	webkit-animation: zadanie-vypolneno-12 6.2s 1 ease-in-out;
+    animation: zadanie-vypolneno-12 6.2s 1 ease-in-out;
+    animation-delay: 8.8s;
+	transition-delay: 8.8s;
+	-webkit-animation-delay: 8.8s;
+	-webkit-transition-delay: 8.8s;
+
 }
 .red-point{
     width:20px;
@@ -89,13 +158,35 @@
     text-align: center;
     border-radius: 5px;
 	background-color:#F0F0F0;
+	z-index:1;
 }
 #field[data-task="6"] #fishDialog{
     width: 506px;
     left: 226px;
     top: 450px;
 }
-#field[data-task="6"][data-substep="2"] #fishDialog{
+#field[data-task="6"][data-substep="2"] #fishDialog,
+#field[data-task="6"][data-substep="3"] #fishDialog{
+    display:none;
+}
+#field[data-task="11"] #fishDialog{
+    width: 506px;
+    left: 226px;
+    top: 450px;
+}
+#field[data-task="12"] #fishDialog{
+    left: 275px;
+    top: 493px;
+    width: 408px;
+    display: none;
+    height: 90px;
+}
+#field[data-task="12"].finished #fishDialog{
+/*    display:block; */
+}
+#field[data-task="12"] #fishDialog .fish-dialog-text{padding-top: 26px;}
+#field[data-task="11"][data-substep="2"] #fishDialog,
+#field[data-task="11"][data-substep="3"] #fishDialog{
     display:none;
 }
 #fishDialog:before{
@@ -150,11 +241,15 @@
 }
 #field[data-task="2"] .draggable,
 #field[data-task="2"] .droppable,
+#field[data-task="11"] .draggable,
+#field[data-task="11"] .droppable,
 #field[data-task="2"] #image5{
     display:none;
 }
 #field[data-task="2"][data-substep="3"] .draggable,
 #field[data-task="2"][data-substep="3"] .droppable,
+#field[data-task="11"][data-substep="3"] .draggable,
+#field[data-task="11"][data-substep="3"] .droppable,
 #field[data-task="2"][data-substep="3"] #image5{
     display:block;
 }
@@ -210,12 +305,27 @@
 	animation:step6img3anim 1s linear;
 }
 #field[data-task="6"] #dragNDropContainer,
-#field[data-task="6"] #image1{
+#field[data-task="6"] #image1,
+#field[data-task="6"] #image4,
+#field[data-task="11"] #image1,
+#field[data-task="11"] #image4{
     display:none;
 }
 #field[data-task="6"][data-substep="2"] #dragNDropContainer,
-#field[data-task="6"][data-substep="2"]  #image1{
+#field[data-task="6"][data-substep="2"]  #image1,
+#field[data-task="11"][data-substep="2"]  #image1,
+#field[data-task="11"][data-substep="3"]  #image1,
+#field[data-task="11"][data-substep="3"] #image4{
     display:block;
+}
+
+#field[data-task="11"][data-substep="3"] #image4{
+    top: 456px;
+    left: 57px;
+}
+
+#field[data-task="11"][data-substep="3"] #image4 .inner-element{
+    width: 300px;
 }
 #field[data-task="6"][data-substep="2"] #image3{
     background-size:100%;
@@ -248,6 +358,43 @@
     top: 276px;
     left: 483px;
 }
+#field[data-task="11"] #image3{
+    background-image:url('images/06-2.jpg');
+    width: 670px;
+    height: 500px;
+    left: 138px;
+    top: 8px;
+    background-size: 658px;
+}
+#field[data-task="11"][data-substep="2"] #image3,
+#field[data-task="12"][data-substep="2"] #image3{
+    background-image:url('images/06-4.jpg');
+    width: 704px;
+    left: 145px;
+    background-size: 704px;
+}
+
+#field[data-task="12"].finished #image3{
+left: 145px;
+    width: 705px;
+    height: 430px;
+    top: 44px;
+	transition-delay:8.8s;
+}
+#field[data-task="11"][data-substep="3"] #image3,
+#field[data-task="12"] #image3{
+    width: 506px;
+    top: 25px;
+    height: 400px;
+    left: 438px;
+	transition-duration:1s;
+/*    opacity: 0.5;   */
+    background-image:url('images/06-4.jpg');
+    background-size: 100%;
+}
+#field[data-task="12"] #image3{
+    background-image:url(images/07-2.jpg);
+}
 
 #field[data-task="8"] #image2{
     top: 300px;
@@ -260,6 +407,25 @@
 #field[data-task="10"] #image2{
     top: 130px;
     left: 881px;
+}
+#field[data-task="11"] #image2{
+    top: 172px;
+    left: 877px;
+	opacity:0;
+}
+#field[data-task="12"] #image2{
+    top:323px;
+	left:873px;
+}
+#field[data-task="12"] #image2{
+    opacity:1;
+}
+#field[data-task="12"].finished #image2{
+    opacity:1;
+}
+#field[data-task="11"][data-substep="3"] #image2{
+	opacity:1;
+	transition-delay:1.2s;
 }
 #field[data-task="2"] #image2{
     background-image:url('images/02-2.jpg');
@@ -348,7 +514,9 @@
 #field[data-task="7"] #image1,
 #field[data-task="8"] #image1,
 #field[data-task="9"] #image1,
-#field[data-task="10"] #image1{
+#field[data-task="10"] #image1,
+#field[data-task="11"] #image1,
+#field[data-task="12"] #image1{
     width: 385px;
     height: 515px;
     top: 68px;
@@ -367,23 +535,33 @@
 #field[data-task="8"] #image1 .inner-element,
 #field[data-task="9"] #image1 .inner-element,
 #field[data-task="9"] #image4 .inner-element,
-#field[data-task="10"] #image1 .inner-element{
+#field[data-task="10"] #image1 .inner-element,
+#field[data-task="11"] #image1 .inner-element,
+#field[data-task="11"] #image4 .inner-element,
+#field[data-task="12"] #image1 .inner-element,
+#field[data-task="12"] #image4 .inner-element{
     top: 307px;
     font-size: 28px;
     line-height: 38px;
     position: absolute;
     width: 100%;
 }
+
+#field[data-task="12"] #image1 .inner-element{top: 289px;}
+#field[data-task="11"] #image1 .inner-element{top: 253px;}
 #field[data-task="10"] #image1 .inner-element{top: 266px;}
 #field[data-task="6"] #image1 .inner-element,
 #field[data-task="9"] #image1 .inner-element{top: 284px;}
 #field[data-task="7"] #image1 .inner-element{top: 283px;}
 #field[data-task="5"] #image3 .inner-element,
+#field[data-task="11"] #image4 .inner-element,
 #field[data-task="5"] #image4 .inner-element,
-#field[data-task="8"] #image4 .inner-element{
+#field[data-task="8"] #image4 .inner-element,
+#field[data-task="12"] #image4 .inner-element{
     top:0px;
 }
-#field[data-task="9"] #image4 .inner-element{
+#field[data-task="9"] #image4 .inner-element,
+#field[data-task="12"] #image4 .inner-element{
     width: 300px;
     top: 0px;
 }
@@ -392,13 +570,21 @@
     top: 448px;
     left: 58px;
 }
+#field[data-task="11"] #image4 .inner-element{
+
+}
 #field[data-task="7"] #droppable1{top: 371px;}
 #field[data-task="6"] #image4{
     top: 448px;
     left: 58px;
 }
+#field[data-task="12"] #image4{
+    top: 448px;
+    left: 58px;
+}
 #field[data-task="6"] #dragNDropContainer,
-#field[data-task="10"] #dragNDropContainer{
+#field[data-task="10"] #dragNDropContainer,
+#field[data-task="11"] #dragNDropContainer{
     height:450px;
 }
 #field[data-task="5"] #image4 .inner-element,
@@ -447,6 +633,15 @@
 }
 #droppable1{
     top:358px;
+}
+#field[data-task="12"] #droppable1{
+    top: 298px;
+}
+#field[data-task="11"] #droppable1{
+    top: 303px;
+}
+#field[data-task="11"] #droppable2{
+    top: 399px;
 }
 #field[data-task="10"] #droppable1{
     top: 392px;
@@ -1182,7 +1377,7 @@ var task=[{},
 },
 //8
 {
-    "nextStepDelay":2000,
+    "nextStepDelay":2500,
     "test_images":[
 	    {},
 		{"value":"Вместе с кислородом<br>я возвращаюсь в"},
@@ -1273,12 +1468,144 @@ var task=[{},
 },
 //11
 {
+    "nextStepDelay":3300,
+    "test_images":[
+	    {},
+		{"value":"В капиллярах тела я отдаю<br>клеткам органов"},
+		{"classes":"red-point"},
+		{},
+		{"value":"и забираю ненужный"}
+	],
 	"test_fish_dialog":{
 		"text":"На схеме нарисуем это так.",
 		"button":"Дальше",
 		"buttonclick":function(){
-			
+			$('#field').attr('data-substep','2');
+			setTimeout(function(){
+				$('#field').attr('data-substep','3');
+			}, 500);
 		}
+	},
+	"test_drag_n_drop":{
+		"draggables":[
+			{"returnable":true, "onWrong":"defaultplace"/**/},
+			{"value":"эритроциты"},
+			{"value":"кислород"},
+			{"value":"углекислый газ"}
+		],
+		"droppables":[
+			{"checkOnDrop":true},
+			{"values":["кислород"]},
+			{"values":["углекислый газ"]}
+		]
+	},
+	onFinish:function(){
+		$('#image2').css({'transition':'0s'});
+		var movement = function(){
+			console.log('movement1');
+			var top = $('#image2').position().top;
+			top++;
+			var delta = top-172;
+			var left = 877-(delta/4.6);
+			$('#image2').css({"top":top+"px", "left":left+"px"});
+		}
+		/*
+			top: 172px;
+			left: 877px;
+		*/
+		for(var i=0;i<14;i++){//0.28s
+			setTimeout(movement, i*20);
+		}
+		
+		/* 186/874 */
+		for(i=0;i<84;i++){ //0.3+1.68s
+			setTimeout(function(){
+				console.log('movement2');
+				var top = $('#image2').position().top;
+				top++;
+				$('#image2').css({"top":top+"px"});
+			}, (i*20)+300);
+		}
+		/* 270/874*/
+		movement = function(){
+			console.log('movement3');
+			var top = $('#image2').position().top;
+			top++;
+			var delta = top-270;
+			var left = 874+(delta/2);
+			$('#image2').css({"top":top+"px", "left":left+"px"});
+		}
+		for(i=0;i<40;i++){
+			setTimeout(movement, (i*20)+2000);
+		}
+		/* 310/894 */
+		movement = function(){
+			console.log('movement4');
+			var top = $('#image2').position().top;
+			top++;
+			var delta = top-310;
+			var left = 894-(delta/1.1);
+			$('#image2').css({"top":top+"px", "left":left+"px"});
+		}
+		for(i=0;i<23;i++){
+			setTimeout(movement, (i*20)+2820);
+		}
+		/* 323/873 */
+	}
+},
+//12
+{
+	"nextStepDelay":2000,
+	"finalText":"Задание выполнено!",
+	"test_images":[
+	    {},
+		{"value":"И с ним по"},
+		{"classes":"red-point"},
+		{},
+		{"value":"снова спешу<br>в сердце."}
+	],
+	"test_drag_n_drop":{
+		"draggables":[
+			{"returnable":true, "onWrong":"defaultplace"/**/},
+			{"value":"капиллярам"},
+			{"value":"артериям"},
+			{"value":"венам"}
+		],
+		"droppables":[
+			{"checkOnDrop":true},
+			{"values":["венам"]}
+		]
+	},
+	"test_fish_dialog":{
+		"text":"Так весь день и ношусь.",
+			//"button":"Дальше",
+			/* "buttonclick":function(){
+				$('#field').attr('data-substep','2');
+				var video = $('#videoAnimation')[0];
+				video.pause();
+				video.currentTime = 0;
+				video.play();
+			} */
+	},
+	"onFinish":function(){
+		//$('#image2').data('plusplus','true');
+		var movement = function(){
+			if($('#field').attr('data-task')=='12'){
+				roundMovement($('#image2'), 225, 765, 150, false);
+			}
+		};
+		for(var i=0;i<255;i++){
+			setTimeout(movement, (i*30)+1000);
+		}
+		setTimeout(function(){
+			if($('#field').attr('data-task')=='12'){
+				$('#image1').hide();
+				$('#image2').hide();
+				$('#image4').hide();
+				$('#dragNDropContainer').hide();
+				$('#fishDialog').show();
+			}
+		}, 8800);
 	}
 }
 ]
