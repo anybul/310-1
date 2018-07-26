@@ -1093,6 +1093,33 @@ var test_video_anim = {
 	}
 };
 
+var test_fake_steps = {
+    create:function(){
+		var table = {
+			1:1,
+			2:2,
+			3:3,
+			4:3,
+			5:4,
+			6:4,
+			7:0,
+			8:0,
+			9:0,
+			10:0,
+			11:0,
+			12:0
+		}
+		result = [];
+		
+		for(var i=0;i<7;i++){
+			
+		}
+		
+		return result;
+	}
+};
+
+
 var test_test = {
     create:function(){
 		
@@ -1346,6 +1373,30 @@ var task=[{},
     "nextStepDelay":2000,
     "test_images":[
 	    {},
+		{"value":"Там я отдаю"},
+		{"classes":"red-point"},
+		{},
+		{"value":"и принимаю"}
+	],
+	"test_drag_n_drop":{
+		"draggables":[
+			{"returnable":true, "onWrong":"defaultplace"/**/},
+			{"value":"кислород"},
+			{"value":"углекислый газ"},
+			{"value":"воду"}
+		],
+		"droppables":[
+			{"checkOnDrop":true},
+			{"values":["углекислый газ"]},
+			{"values":["кислород"]}
+		]
+	}
+},
+//8
+{
+    "nextStepDelay":2000,
+    "test_images":[
+	    {},
 		{"value":"Кровь, насыщенную<br>кислородом,<br>обычно рисуют"},
 		{"classes":"red-point"},
 		{},
@@ -1375,7 +1426,7 @@ var task=[{},
 		}
 	}
 },
-//8
+//9
 {
     "nextStepDelay":2500,
     "test_images":[
@@ -1409,7 +1460,7 @@ var task=[{},
 		}
 	}
 }, 
-//9
+//10
 {
     "nextStepDelay":3500,
     "test_images":[
@@ -1443,7 +1494,7 @@ var task=[{},
 		}
 	}
 },
-
+//11
 {
     "nextStepDelay":2000,
 	    "test_images":[
@@ -1466,7 +1517,7 @@ var task=[{},
 		]
 	}
 },
-//11
+//12
 {
     "nextStepDelay":3300,
     "test_images":[
@@ -1553,7 +1604,7 @@ var task=[{},
 		/* 323/873 */
 	}
 },
-//12
+//13
 {
 	"nextStepDelay":2000,
 	"finalText":"Задание выполнено!",
