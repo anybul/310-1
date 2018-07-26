@@ -80,7 +80,6 @@
 	transition-delay: 8.8s;
 	-webkit-animation-delay: 8.8s;
 	-webkit-transition-delay: 8.8s;
-
 }
 .red-point{
     width:20px;
@@ -804,7 +803,7 @@ left: 145px;
 	height:0px;
 	background-size:0px;
 	background-color:#FF7877;
-	/*box-shadow:transparent 0px 0px 0px 0px;*/
+	box-shadow:transparent 0px 0px 0px 0px;/**/
 	margin-top:-10px;
 	margin-left:-10px;
     animation:step7fishOutro 1s linear;
@@ -966,7 +965,10 @@ left: 145px;
 	height:91px;
 	background-image:url(images/co2.jpg);
 	background-size:91px;
+/*	background-size:18.6%; */
+/*    background-repeat: no-repeat; */
 }
+
 @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi){
 	#field[data-task="1"] #image0{
         background-image:url('images/cell@2x.jpg');
@@ -1277,7 +1279,7 @@ var task=[{},
 },
 //3
 {
-   "nextStepDelay":2000,
+//   "nextStepDelay":2000,
    "test_fake_steps":[],
     "test_images":[
 	    {},
@@ -1647,6 +1649,7 @@ var task=[{},
 //13
 {
 	"nextStepDelay":2000,
+	"test_fake_steps":[],
 	"finalText":"Задание выполнено!",
 	"test_images":[
 	    {},
