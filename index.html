@@ -14,6 +14,19 @@
 }
 .step{z-index:1;display:none;}
 .step.fake-step{display:inline-block}
+@keyframes show-button{
+    0%{opacity:0;}
+	99%{opacity:0;}
+	100%{opacity:1;}
+}
+
+
+#field[data-task="6"] .button.fish-dialog-button{
+    animation:show-button 2s linear;
+}
+#field[data-task="12"] .button.fish-dialog-button{
+    animation:show-button 2s linear;
+}
 @-webkit-keyframes zadanie-vypolneno-12{
 	0%{opacity:0;}
 	6%{
@@ -335,6 +348,7 @@
     width: 480px;
     left: 438px;
     top: 72px;
+	z-index:-1;
     animation: step6image4resize 1s linear;
 }
 #field[data-task="7"] #image3{animation:none}
@@ -374,6 +388,7 @@
     left: 138px;
     top: 8px;
     background-size: 658px;
+	z-index:-1;
 }
 #field[data-task="12"][data-substep="2"] #image3,
 #field[data-task="13"][data-substep="2"] #image3{
@@ -381,6 +396,7 @@
     width: 704px;
     left: 145px;
     background-size: 704px;
+	z-index:-1;
 }
 
 #field[data-task="13"].finished #image3{
@@ -396,6 +412,7 @@ left: 145px;
     top: 25px;
     height: 400px;
     left: 438px;
+
 	transition-duration:1s;
 /*    opacity: 0.5;   */
     background-image:url('images/06-4.jpg');
@@ -742,8 +759,8 @@ left: 145px;
 		
 	}
 	100%{
-		top: 235px;
-		left: 475px;
+		top: 225px;
+		left: 465px;
 		width:0px;
 		height:0px;
 		background-size:0px;
@@ -801,7 +818,8 @@ left: 145px;
     left: 483px;
 	width:0px;
 	height:0px;
-	background-size:0px;
+/*	background-size:0px; */
+	transition-delay:1s;
 	background-color:#FF7877;
 	box-shadow:transparent 0px 0px 0px 0px;/**/
 	margin-top:-10px;
@@ -838,6 +856,7 @@ left: 145px;
 #field[data-task="8"] #image4,
 #field[data-task="5"] #videoAnimationContainer,
 #field[data-task="6"][data-substep="2"] #videoAnimationContainer,
+#field[data-task="12"] #videoAnimationContainer,
 #field[data-task="11"] #image0{
     position:absolute;
     top: 318px;
@@ -894,6 +913,57 @@ left: 145px;
 		margin-left:-10px;
 	}
 }
+@keyframes step12videosize{
+	0%{
+		width:0px;
+		height:0px;
+		top: 170px;
+		left: 875px;
+	}
+	100%{
+        top: 318px;
+        left: 438px;
+        width: 487px;
+        height: 264px;
+	}
+}
+@keyframes step12videosizeinvert{
+	0%{
+        top: 318px;
+        left: 438px;
+        width: 487px;
+        height: 264px;
+	}
+	100%{
+		width:0px;
+		height:0px;
+		top: 170px;
+		left: 875px;
+	}
+}
+
+#field[data-task="12"] #videoAnimationContainer{
+	overflow:hidden;
+    width:0px;
+	height:0px;
+    top: 170px;
+    left: 875px;
+	animation:none;
+}
+#field[data-task="12"][data-substep="3"] #videoAnimationContainer{
+    top: 318px;
+    left: 438px;
+    width: 487px;
+    height: 264px;
+	animation:step12videosize 1s linear;
+}
+#field[data-task="12"].finished #videoAnimationContainer{
+    width:0px;
+	height:0px;
+    top: 170px;
+    left: 875px;
+    animation:step12videosizeinvert 1s linear;
+}
 #field[data-task="11"] #image0{
     z-index: 1;
 	background-image:url(images/vessels.jpg);
@@ -932,18 +1002,34 @@ left: 145px;
 #field[data-task="5"].finished #videoAnimationContainer,
 #field[data-task="6"][data-substep="2"].finished #videoAnimationContainer{
     animation:step5fishOutro 1s linear;
-	top: 235px;
-		left: 475px;
-		width:0px;
-		height:0px;
+	top: 225px;
+	left: 465px;
+	width:0px;
+	height:0px;
 }
 #videoAnimation{
     width: 490px;
     height: 275px;
 	animation: step5videosize 1s linear;
 }
+#field[data-task="6"] #videoAnimation,
+#field[data-task="12"] #videoAnimation{animation:none;}
+#field[data-task="12"][data-substep="3"] #videoAnimation{
+    animation: step5videosize 1s linear;
+}
+#field[data-task="6"][data-substep="2"] #videoAnimation{
+    animation: step5videosize 1s linear;
+    animation-delay:2s;
+}
 #field.finished #videoAnimation{
 	animation:step5videosizeinvert 1s linear;
+}
+#field[data-task="6"].finished #videoAnimation{
+    animation: step5videosizeinvert 1s linear;
+}
+#field[data-task="12"].finished #videoAnimation{
+    animation: step5videosizeinvert 1s linear;
+	animation-delay:0s;
 }
 #field[data-task="3"].finished #image3{
     top: 183px;
@@ -955,20 +1041,23 @@ left: 145px;
 	margin-left:-10px;
 	margin-top:-10px;
 }
-#field[data-task="3"].finished #image3:before{
+#field[data-task="3"].finished #image3:before,
+#field[data-task="8"].finished #image4:before{
     content:'';
 	display:block;
 	position:absolute;
-	top: 94px;
-    left: 199px;
 	width:91px;
 	height:91px;
 	background-image:url(images/co2.jpg);
-	background-size:91px;
-/*	background-size:18.6%; */
-/*    background-repeat: no-repeat; */
+    width: 18.6%;
+	height:35%;
+	top:35%;
+	left:41%;
+	background-size:contain;
 }
-
+#field[data-task="8"].finished #image4:before{
+    background-image:url(images/o2.jpg);
+}
 @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi){
 	#field[data-task="1"] #image0{
         background-image:url('images/cell@2x.jpg');
@@ -985,6 +1074,9 @@ left: 145px;
 	#field[data-task="2"] #image2{
         background-image:url('images/02-2@2x.jpg');
 	}
+	#field[data-task="8"].finished #image4:before{
+    background-image:url(images/o2@2x.jpg);
+}
 }
 
 </style>
@@ -1098,13 +1190,24 @@ var test_video_anim = {
     create:function(input){
 		result = [];
 		var container = $('<div></div>').attr('id', 'videoAnimationContainer');
+		if(input.delay){
+			container.data('delay', input.delay)
+		}
 		var video = $('<video></video>').attr({'id':'videoAnimation','src':input.src});
 		container.append(video);
 		result.push(container);
 		return result;
 	},
 	onStart:function(){
-		$('#videoAnimation')[0].play();
+		var delay = $('#videoAnimationContainer').data('delay');
+		if(!delay){
+			$('#videoAnimation')[0].play();
+		} else {
+			setTimeout(function(){
+				$('#videoAnimation')[0].play();
+			}, delay);
+		}
+		
 	}
 };
 
@@ -1145,8 +1248,14 @@ var test_fake_steps = {
 		return result;
 	},
 	onFinish:function(){
-		if(test_fake_steps.table[globalVars.currentTask]!=test_fake_steps.table[globalVars.currentTask+1]){
+		if(test_fake_steps.table[globalVars.currentTask]!=test_fake_steps.table[globalVars.currentTask+1] && globalVars.currentTask!=13){
 			$('.fstep-'+test_fake_steps.table[globalVars.currentTask]).addClass('step-animation').addClass('right').html('');
+		} else if(globalVars.currentTask==13){
+			setTimeout(function(){
+				if(globalVars.currentTask==13){
+					$('.fstep-7').addClass('step-animation').addClass('right').html('');
+				}
+			}, 8800);
 		}
 	}
 };
@@ -1279,7 +1388,7 @@ var task=[{},
 },
 //3
 {
-//   "nextStepDelay":2000,
+   "nextStepDelay":2000,
    "test_fake_steps":[],
     "test_images":[
 	    {},
@@ -1363,7 +1472,7 @@ var task=[{},
 {
     "nextStepDelay":2000,
 	"test_fake_steps":[],
-    "test_video_anim":{"src":"images/03-4_980х550.mp4"},
+    "test_video_anim":{"src":"images/03-4_980х550.mp4","delay":2200},
     "test_images":[
 	    {},
 		{"value":"Там я отдаю"},
@@ -1466,7 +1575,7 @@ var task=[{},
 },
 //9
 {
-    "nextStepDelay":2500,
+    "nextStepDelay":3000,
 	"test_fake_steps":[],
     "test_images":[
 	    {},
@@ -1560,7 +1669,7 @@ var task=[{},
 },
 //12
 {
-    "nextStepDelay":3300,
+    "nextStepDelay":4300,
 	"test_fake_steps":[],
     "test_images":[
 	    {},
@@ -1569,6 +1678,7 @@ var task=[{},
 		{},
 		{"value":"и забираю ненужный"}
 	],
+	"test_video_anim":{"src":"images/07-1_980х550.mp4","delay":999999999999},
 	"test_fish_dialog":{
 		"text":"На схеме нарисуем это так.",
 		"button":"Дальше",
@@ -1576,6 +1686,7 @@ var task=[{},
 			$('#field').attr('data-substep','2');
 			setTimeout(function(){
 				$('#field').attr('data-substep','3');
+				$('#videoAnimation')[0].play();
 			}, 500);
 		}
 	},
@@ -1607,7 +1718,7 @@ var task=[{},
 			left: 877px;
 		*/
 		for(var i=0;i<14;i++){//0.28s
-			setTimeout(movement, i*20);
+			setTimeout(movement, (i*20)+1000);
 		}
 		
 		/* 186/874 */
@@ -1617,7 +1728,7 @@ var task=[{},
 				var top = $('#image2').position().top;
 				top++;
 				$('#image2').css({"top":top+"px"});
-			}, (i*20)+300);
+			}, (i*20)+1300);
 		}
 		/* 270/874*/
 		movement = function(){
@@ -1629,7 +1740,7 @@ var task=[{},
 			$('#image2').css({"top":top+"px", "left":left+"px"});
 		}
 		for(i=0;i<40;i++){
-			setTimeout(movement, (i*20)+2000);
+			setTimeout(movement, (i*20)+3000);
 		}
 		/* 310/894 */
 		movement = function(){
@@ -1641,7 +1752,7 @@ var task=[{},
 			$('#image2').css({"top":top+"px", "left":left+"px"});
 		}
 		for(i=0;i<23;i++){
-			setTimeout(movement, (i*20)+2820);
+			setTimeout(movement, (i*20)+3820);
 		}
 		/* 323/873 */
 	}
