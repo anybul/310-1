@@ -1200,6 +1200,40 @@ function roundMovement(el, offsetTop, offsetLeft, radius, direction){
 		el.css('left', x+offsetLeft);
 }
 
+var finalMovement = function(){
+	if($('#field').attr('data-task')=='13'){
+		$('#image2').data('plusplus','');
+		var movement = function(){
+			if($('#field').attr('data-task')=='13'){
+				roundMovement($('#image2'), 262, 290, 108, true);
+			}
+		};
+		for(var i=0;i<435;i++){
+			setTimeout(movement, (i*30));
+		}
+		movement = function(){
+			if($('#field').attr('data-task')=='13'){
+				roundMovement($('#image2'), 265, 586,220, false);
+			}
+		};
+		setTimeout(function(){
+			$('#image2').css({"top":"220px","left":"390px"});
+			$('#image2').data('plusplus','true');
+		}, 12910);
+		for(i=0;i<150;i++){
+			setTimeout(movement, (i*30)+12930);
+		}
+		movement = function(){
+			if($('#field').attr('data-task')=='13'){
+				roundMovement($('#image2'), 260, 586,210, false);
+			}
+		};
+		for(i=0;i<675;i++){
+			setTimeout(movement, (i*30)+17430);
+		}
+		setTimeout(finalMovement, 37710)
+	}
+}
 
 var test_fish_dialog = {
     create:function(input){
@@ -1327,10 +1361,8 @@ var test_test = {
 var task8start = {
     create:function(){return [];},
 	onStart:function(){
-		//console.log('hz pochemu ne rabotaet 1');
 		var movement = function(){
 			if($('#field').attr('data-task')=='8'){
-				//console.log('hz pochemu ne rabotaet 2');
 				roundMovement($('#image2'), 225, 540, 75, true);
 			}
 		};
@@ -1894,6 +1926,8 @@ var task=[{},
 		setTimeout(function(){
 			if($('#field').attr('data-task')=='13'){
 				$('.step').hide();
+				finalMovement();
+				$('#image2').show();
 			}
 		}, 9800);
 	}
