@@ -79,12 +79,10 @@
 }
 #field[data-task="13"].finished .step.right, 
 #field[data-task="13"].finished .step.step-animation.right {
-    animation-delay: 8.8s;
+   /* animation-delay: 8.8s;*/
     transition-delay: 9s;
 	transition-duration:1s;
 	opacity: 0;
-	
-
 }
 #field[data-task="13"].finished .final-text{
 	-webkit-animation: zadanie-vypolneno-7 6.2s 1 ease-in-out;
@@ -902,8 +900,8 @@ left: 145px;
 		
 	}
 	100%{
-		top: 130px;
-		left: 881px;
+		top: 140px;
+		left: 891px;
 		width:0px;
 		height:0px;
 		background-size:0px;
@@ -1048,7 +1046,7 @@ left: 145px;
 	position:absolute;
 	width:91px;
 	height:91px;
-	background-image:url(images/co2.jpg);
+	background-image:url(images/co2.png);
     width: 18.6%;
 	height:35%;
 	top:35%;
@@ -1056,12 +1054,18 @@ left: 145px;
 	background-size:contain;
 }
 #field[data-task="8"].finished #image4:before{
-    background-image:url(images/o2.jpg);
+    background-image:url(images/o2.png);
 }
 @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi){
 	#field[data-task="1"] #image0{
         background-image:url('images/cell@2x.jpg');
     }
+	#field[data-task="1"] #image1 {
+        background-image: url(images/fish@2x.jpg);
+	}
+	#field[data-task="2"][data-substep="3"] #image4 {
+        background-image: url(images/02-3@2x.jpg);
+	}
 	#fishDialog:before{
 		background-image:url('images/grey-tail@2x.png');
 	}
@@ -1074,9 +1078,42 @@ left: 145px;
 	#field[data-task="2"] #image2{
         background-image:url('images/02-2@2x.jpg');
 	}
+	#field[data-task="3"] #image0, #field[data-task="4"] #image0, #field[data-task="4"] #image3, #field[data-task="5"] #image0 {
+        background-image: url(images/03-1@2x.jpg);
+	}
+	#field[data-task="3"] #image3, #field[data-task="8"] #image4, #field[data-task="5"] #videoAnimationContainer, #field[data-task="6"][data-substep="2"] #videoAnimationContainer, #field[data-task="12"] #videoAnimationContainer, #field[data-task="11"] #image0 {
+        background-image: url(images/fish2@2x.png);
+	}
+	#field[data-task="4"] #image3, #field[data-task="5"] #image0 {
+        background-image: url(images/03-4@2x.jpg);
+    }
+	#field[data-task="6"] #image3, #field[data-task="7"] #image3 {
+		background-image: url(images/04-3@2x.jpg);
+	}
+	#field[data-task="8"] #image3, #field[data-task="9"] #image3, #field[data-task="10"] #image3, #field[data-task="11"] #image3 {
+        background-image: url(images/05-2@2x.jpg);
+	}
+	#field[data-task="9"] #image3 {
+        background-image: url(images/05-3@2x.jpg);
+    }
+	#field[data-task="10"] #image3 {
+        background-image: url(images/06-1@2x.jpg);
+    }
+	#field[data-task="11"] #image3 {
+        background-image: url(images/06-2@2x.jpg);
+    }
+	#field[data-task="12"] #image3 {
+        background-image: url(images/06-2@2x.jpg);
+	}
+	#field[data-task="12"][data-substep="3"] #image3, #field[data-task="13"] #image3 {
+        background-image: url(images/06-4@2x.jpg);
+	}
+	#field[data-task="13"] #image3 {
+        background-image: url(images/07-2@2x.jpg);
+    }
 	#field[data-task="8"].finished #image4:before{
-    background-image:url(images/o2@2x.jpg);
-}
+		background-image:url(images/o2@2x.png);
+	}
 }
 
 </style>
@@ -1310,7 +1347,50 @@ var task=[{},
 //	"button":{},
 	"nextStepDelay":2000,
 	"test_preloadimg":[
-		'img/art.png'
+		'images/02-1.jpg',
+		'images/02-1@2x.jpg',
+		'images/02-2.jpg',
+		'images/02-2@2x.jpg',
+		'images/02-3.jpg',
+		'images/02-3@2x.jpg',
+		'images/03-1.jpg',
+		'images/03-1@2x.jpg',
+		'images/03-4.jpg',
+		'images/03-4@2x.jpg',
+		'images/04-1.jpg',
+		'images/04-1@2x.jpg',
+		'images/04-3.jpg',
+		'images/04-3@2x.jpg',
+		'images/05-2.jpg',
+		'images/05-2@2x.jpg',
+		'images/05-3.jpg',
+		'images/05-3@2x.jpg',
+		'images/06-1.jpg',
+		'images/06-1@2x.jpg',
+		'images/06-2.jpg',
+		'images/06-2@2x.jpg',
+		'images/06-4.jpg',
+		'images/06-4@2x.jpg',
+		'images/07-1.jpg',
+		'images/07-1@2x.jpg',
+		'images/07-2.jpg',
+		'images/07-2@2x.jpg',
+		'images/07-3.jpg',
+		'images/07-3@2x.jpg',
+		'images/cell.jpg',
+		'images/cell@2x.jpg',
+		'images/co2.png',
+		'images/co2@2x.png',
+		'images/fish.jpg',
+		'images/fish@2x.jpg',
+		'images/fish2.png',
+		'images/fish2@2x.png',
+		'images/grey-tail.png',
+		'images/grey-tail@2x.png',
+		'images/o2.png',
+		'images/o2@2x.png',
+		'images/vessels.jpg',
+		'images/vessels@2x.jpg'
 	],
 	"test_fake_steps":[],
 	"test_images":[
@@ -1706,7 +1786,7 @@ var task=[{},
 	onFinish:function(){
 		$('#image2').css({'transition':'0s'});
 		var movement = function(){
-			console.log('movement1');
+			//console.log('movement1');
 			var top = $('#image2').position().top;
 			top++;
 			var delta = top-172;
@@ -1724,7 +1804,7 @@ var task=[{},
 		/* 186/874 */
 		for(i=0;i<84;i++){ //0.3+1.68s
 			setTimeout(function(){
-				console.log('movement2');
+				//console.log('movement2');
 				var top = $('#image2').position().top;
 				top++;
 				$('#image2').css({"top":top+"px"});
@@ -1732,7 +1812,7 @@ var task=[{},
 		}
 		/* 270/874*/
 		movement = function(){
-			console.log('movement3');
+			//console.log('movement3');
 			var top = $('#image2').position().top;
 			top++;
 			var delta = top-270;
@@ -1811,6 +1891,11 @@ var task=[{},
 				$('#fishDialog').show();
 			}
 		}, 8800);
+		setTimeout(function(){
+			if($('#field').attr('data-task')=='13'){
+				$('.step').hide();
+			}
+		}, 9800);
 	}
 }
 ]
