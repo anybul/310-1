@@ -495,15 +495,16 @@
     position:absolute;top:0px;left:0px;width:100%;height:100%;content:'';background-position: center center;background-repeat:no-repeat;
 	background-image:url('images/06-2.jpg');
 	background-size: 658px;
-	animation: opacity0-1 2s linear;
+	opacity:0;
+	animation: opacity1-0 2s linear;
 }
 #field[data-task="12"] #image3:after{
     position:absolute;top:0px;left:0px;height:100%;content:'';background-position: center center;background-repeat:no-repeat;
-	width:704px;
+	width: 715px;
 	background-image:url('images/06-4.jpg');
     background-size: 704px;
-	opacity:0;
-	animation: opacity1-0 2s linear;
+
+	animation: opacity0-1 2s linear;
 }
 #field[data-task="12"][data-substep="2"] #image3,
 #field[data-task="13"][data-substep="2"] #image3{
@@ -1089,14 +1090,16 @@
     width: 487px;
     height: 264px;
     border-radius: 5px;
-    background-image: url(images/fish2.png);
+
     background-size: 359px;
 	box-shadow: #FFED76 0px 0px 3px 3px;
 	animation:step3fishIntro 1s linear;
 	background-color:#fffdef;
 	z-index:20;
 }
-
+#field[data-task="3"] #image3{
+    background-image: url(images/fish2.png);
+}
 
 @keyframes step10fishIntro{
     0%{
@@ -1677,7 +1680,10 @@ var test_video_anim = {
 		result = [];
 		var container = $('<div></div>').attr('id', 'videoAnimationContainer');
 		if(input.delay){
-			container.data('delay', input.delay)
+			container.data('delay', input.delay);
+		}
+		if(input.prev){
+			container.data('prev', input.prev);
 		}
 		var video = $('<video></video>').attr({'id':'videoAnimation','src':input.src});
 		container.append(video);
@@ -1686,9 +1692,16 @@ var test_video_anim = {
 	},
 	onStart:function(){
 		var delay = $('#videoAnimationContainer').data('delay');
+		var prev = $('#videoAnimationContainer').data('prev');
 		if(!delay){
 			$('#videoAnimation')[0].play();
 		} else {
+			if(prev=='start'){
+				$('#videoAnimation')[0].play();
+				setTimeout(function(){
+					$('#videoAnimation')[0].pause();
+				}, (delay>100 ? 100: delay) );
+			}
 			setTimeout(function(){
 				$('#videoAnimation')[0].play();
 			}, delay);
@@ -2254,7 +2267,7 @@ var task=[{},
 		{"value":"и забираю ненужный"}
 	],
 	"test_texts":[],
-	"test_video_anim":{"src":"images/07-1_980х550.mp4","delay":999999999999},
+	"test_video_anim":{"src":"images/07-1_980х550.mp4","delay":999999999999,"prev":"start"},
 	"test_fish_dialog":{
 		"text":"На схеме нарисуем это так.",
 		"button":"Дальше",
