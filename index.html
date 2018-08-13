@@ -485,29 +485,47 @@
     animation:none;
 }
 #field[data-task="12"] #image3{
-    background-image:url('images/06-2.jpg');
     width: 670px;
     height: 500px;
     left: 138px;
     top: 8px;
-    background-size: 658px;
 	z-index:-1;
+}
+#field[data-task="12"] #image3:before{
+    position:absolute;top:0px;left:0px;width:100%;height:100%;content:'';background-position: center center;background-repeat:no-repeat;
+	background-image:url('images/06-2.jpg');
+	background-size: 658px;
+	animation: opacity0-1 2s linear;
+}
+#field[data-task="12"] #image3:after{
+    position:absolute;top:0px;left:0px;height:100%;content:'';background-position: center center;background-repeat:no-repeat;
+	width:704px;
+	background-image:url('images/06-4.jpg');
+    background-size: 704px;
+	opacity:0;
+	animation: opacity1-0 2s linear;
 }
 #field[data-task="12"][data-substep="2"] #image3,
 #field[data-task="13"][data-substep="2"] #image3{
-    background-image:url('images/06-4.jpg');
     width: 704px;
     left: 145px;
-    background-size: 704px;
 	z-index:-1;
+	background-image:url('images/06-4.jpg');
+    background-size: 704px;
 }
 
 #field[data-task="13"].finished #image3{
-left: 145px;
+    left: 145px;
     width: 705px;
     height: 430px;
     top: 44px;
 	transition-delay:3.7s;
+}
+#field[data-task="12"][data-substep="2"] #image3:before,
+#field[data-task="12"][data-substep="2"] #image3:after,
+#field[data-task="12"][data-substep="3"] #image3:before,
+#field[data-task="12"][data-substep="3"] #image3:after{
+    display:none;
 }
 #field[data-task="12"][data-substep="3"] #image3,
 #field[data-task="13"] #image3{
@@ -894,6 +912,13 @@ left: 145px;
 		background-color:#ffffff;
 		
 	}
+	50%{
+		top: 318px;
+		left: 438px;
+		width: 487px;
+		height: 264px;
+		box-shadow: #FFED76 0px 0px 3px 3px;
+	}
 	100%{
 		top: 173px;
 		left: 486px;
@@ -930,6 +955,14 @@ left: 145px;
 }
 @keyframes step5fishOutro{
     0%{
+		top: 318px;
+		left: 438px;
+		width: 487px;
+		height: 264px;
+		background-color:#ffffff;
+		
+	}
+	50%{
 		top: 318px;
 		left: 438px;
 		width: 487px;
@@ -979,6 +1012,15 @@ left: 145px;
 		background-color:#ffffff;
 		
 	}
+	50%{
+		top: 318px;
+		left: 438px;
+		width: 487px;
+		height: 264px;
+		background-color:#ffffff;
+		box-shadow: #FFED76 0px 0px 3px 3px;
+		
+	}
 	100%{
 	    top: 276px;
         left: 483px;
@@ -1022,6 +1064,10 @@ left: 145px;
 }
 @keyframes step5videosizeinvert{
 	0%{
+		width: 490px;
+		height: 275px;
+	}
+	50%{
 		width: 490px;
 		height: 275px;
 	}
@@ -1116,6 +1162,12 @@ left: 145px;
         width: 487px;
         height: 264px;
 	}
+	20%{
+        top: 318px;
+        left: 438px;
+        width: 487px;
+        height: 264px;
+	}
 	100%{
 		width:20px;
 		height:20px;
@@ -1156,8 +1208,8 @@ left: 145px;
 	margin-top:-10px;
     left: 877px;
     animation:step12videosizeinvert 1s linear;
-	transition-delay:4s;
-	animation-delay:4s;
+	transition-delay:6s;
+	animation-delay:6s;
 }
 #field[data-task="11"] #image0{
     z-index: 1;
@@ -1203,7 +1255,7 @@ left: 145px;
 }
 #field[data-task="5"].finished #videoAnimationContainer,
 #field[data-task="6"][data-substep="2"].finished #videoAnimationContainer{
-    animation:step5fishOutro 1s linear;
+    animation:step5fishOutro 2s linear;
 	top: 208px; 
 	left: 467px;
 	width:20px;
@@ -1212,6 +1264,7 @@ left: 145px;
 	margin-top:-10px;
 	border-radius:10px;
 }
+
 #field[data-task="6"][data-substep="2"].finished #videoAnimationContainer{
 	animation-delay:4s;
 	transition-delay:4s;
@@ -1225,7 +1278,7 @@ left: 145px;
 #videoAnimation{
     width: 490px;
     height: 275px;
-	animation: step5videosize 0.8s linear;
+	animation: step5videosize 1s linear;
 }
 #field[data-task="6"] #videoAnimation,
 #field[data-task="12"] #videoAnimation{animation:none;}
@@ -1237,14 +1290,14 @@ left: 145px;
     animation-delay:2s;
 }
 #field.finished #videoAnimation{
-	animation:step5videosizeinvert 1s linear;
+	animation:step5videosizeinvert 2s linear;
 }
 #field[data-task="6"].finished #videoAnimation{
-    animation: step5videosizeinvert 1s linear;
+    animation: step5videosizeinvert 2s linear;
 	animation-delay:4s;
 }
 #field[data-task="12"].finished #videoAnimation{
-    animation: step5videosizeinvert 2.5s linear;
+    animation: step5videosizeinvert 4.5s linear;
 	animation-delay:4s;
 }
 #field[data-task="3"].finished #image3{
@@ -1939,7 +1992,7 @@ var task=[{},
 },
 //5
 {
-    "nextStepDelay":2000,
+    "nextStepDelay":3000,
 	"test_fake_steps":[],
     "test_video_anim":{"src":"images/03-1_980х550.mp4"},
     "test_images":[
@@ -1965,7 +2018,7 @@ var task=[{},
 },
 //6
 {
-    "nextStepDelay":5650,
+    "nextStepDelay":7650,
 	"test_fake_steps":[],
     "test_video_anim":{"src":"images/03-4_980х550.mp4","delay":2200},
     "test_images":[
@@ -2013,9 +2066,9 @@ var task=[{},
 				$('#videoAnimationContainer').hide();
 			}
 			
-		}, 5000);
+		}, 6000);
 		for(var i=0;i<21;i++){
-			setTimeout(movement, (i*30)+5000);
+			setTimeout(movement, (i*30)+6000);
 		}
 	}
 },
@@ -2045,7 +2098,7 @@ var task=[{},
 },
 //8
 {
-    "nextStepDelay":2000,
+    "nextStepDelay":3000,
 	"test_fake_steps":[],
     "test_images":[
 	    {},
@@ -2075,7 +2128,7 @@ var task=[{},
 			}
 		};
 		for(var i=0;i<48;i++){
-			setTimeout(movement, (i*30)+1000);
+			setTimeout(movement, (i*30)+2000);
 		}
 	}
 },
@@ -2191,7 +2244,7 @@ var task=[{},
 },
 //12
 {
-    "nextStepDelay":8300,
+    "nextStepDelay":11300,
 	"test_fake_steps":[],
     "test_images":[
 	    {},
@@ -2245,9 +2298,9 @@ var task=[{},
 			if($('#field').attr('data-task')=='12'){
 				$('#videoAnimationContainer').hide();
 			}
-		},5000);
+		},8000);
 		for(var i=0;i<14;i++){//0.28s
-			setTimeout(movement, (i*20)+5000);
+			setTimeout(movement, (i*20)+8000);
 		}
 		
 		/* 186/874 */
@@ -2257,7 +2310,7 @@ var task=[{},
 				var top = $('#image2').position().top;
 				top++;
 				$('#image2').css({"top":top+"px"});
-			}, (i*20)+5300);
+			}, (i*20)+8300);
 		}
 		/* 270/874*/
 		movement = function(){
@@ -2269,7 +2322,7 @@ var task=[{},
 			$('#image2').css({"top":top+"px", "left":left+"px"});
 		}
 		for(i=0;i<40;i++){
-			setTimeout(movement, (i*20)+7000);
+			setTimeout(movement, (i*20)+10000);
 		}
 		/* 310/894 */
 		movement = function(){
@@ -2281,7 +2334,7 @@ var task=[{},
 			$('#image2').css({"top":top+"px", "left":left+"px"});
 		}
 		for(i=0;i<23;i++){
-			setTimeout(movement, (i*20)+7820);
+			setTimeout(movement, (i*20)+10820);
 		}
 		/* 323/873 */
 	}
