@@ -509,10 +509,12 @@
 #field[data-task="12"][data-substep="2"] #image3,
 #field[data-task="13"][data-substep="2"] #image3{
     width: 704px;
-    left: 145px;
+    /* left: 145px; */
 	z-index:-1;
 	background-image:url('images/06-4.jpg');
     background-size: 704px;
+    width: 715px;
+	/*background-position: 6px 37px;*/
 }
 
 #field[data-task="13"].finished #image3{
@@ -1239,6 +1241,7 @@
 	width: 487px;
 	height: 264px;
 	background-color:#fffdef;
+	background-image:url(images/fish2.png);
     animation:step7fishIntro 1s linear;
 	
 }
@@ -1470,7 +1473,7 @@
 	#field[data-task="3"] #image0, #field[data-task="4"] #image0, #field[data-task="4"] #image3, #field[data-task="5"] #image0 {
         background-image: url(images/03-1@2x.jpg);
 	}
-	#field[data-task="3"] #image3, #field[data-task="8"] #image4, #field[data-task="5"] #videoAnimationContainer, #field[data-task="6"][data-substep="2"] #videoAnimationContainer, #field[data-task="12"] #videoAnimationContainer {
+	#field[data-task="3"] #image3{
         background-image: url(images/fish2@2x.png);
 	}
 	#field[data-task="11"] #image0{
@@ -1488,6 +1491,10 @@
 	#field[data-task="8"] #image3, #field[data-task="9"] #image3, #field[data-task="10"] #image3, #field[data-task="11"] #image3 {
         background-image: url(images/05-2@2x.jpg);
 	}
+	#field[data-task="8"] #image4{
+	    background-image:url(images/fish2@2x.png);
+	}
+	
 	#field[data-task="9"] #image3 {
         background-image: url(images/05-3@2x.jpg);
     }
@@ -1497,9 +1504,13 @@
 	#field[data-task="11"] #image3 {
         background-image: url(images/06-2@2x.jpg);
     }
-	#field[data-task="12"] #image3 {
+	#field[data-task="12"] #image3:before {
         background-image: url(images/06-2@2x.jpg);
 	}
+	#field[data-task="12"] #image3:after {
+        background-image: url(images/06-4@2x.jpg);
+	}
+	#field[data-task="12"][data-substep="2"] #image3,
 	#field[data-task="12"][data-substep="3"] #image3, #field[data-task="13"] #image3 {
         background-image: url(images/06-4@2x.jpg);
 	}
